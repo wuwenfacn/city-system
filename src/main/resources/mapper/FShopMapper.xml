@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.FShopMapper">
+    <resultMap id="FShopMapper" type="com.demo.entity.FShop">
+        <id property="sId" column="s_id"></id>
+        <result property="sName" column="s_name"></result>
+        <result property="sReserve" column="s_reserve"></result>
+        <result property="sServe" column="s_serve"></result>
+        <result property="sLabel" column="s_label"></result>
+        <result property="sLogo" column="s_logo"></result>
+        <result property="sBackImg" column="s_back_img"></result>
+        <result property="sProductImg" column="s_product_img"></result>
+        <result property="sEnvironmentImg" column="s_environment_img"></result>
+        <result property="sElseImg" column="s_else_img"></result>
+        <result property="sBusiness" column="s_business"></result>
+        <result property="sProvince" column="s_province"></result>
+        <result property="sCity" column="s_city"></result>
+        <result property="sDistrict" column="s_district"></result>
+        <result property="sTrading" column="s_trading"></result>
+        <result property="sAddress" column="s_address"></result>
+        <result property="sPath" column="s_path"></result>
+        <result property="sLinkman" column="s_linkman"></result>
+        <result property="sPhone" column="s_phone"></result>
+        <result property="sBusinessHours" column="s_business_hours"></result>
+        <result property="sBrief" column="s_brief"></result>
+    </resultMap>
+    <!--显示所有的门店信息-->
+    <select id="selectFShopList" resultMap="FShopMapper">
+        select s_id, s_back_img, s_name, s_city, s_business
+        from f_shop
+        where s_status = #{status}
+        and delete_status = 1
+        limit #{pageNum},#{pageSize};
+    </select>
+    <!--新增门店-->
+    <insert id="insertFShop">
+        insert into f_shop(s_name, s_reserve, s_serve, s_label, s_logo,
+         s_back_img, s_product_img, s_environment_img, s_else_img, s_business,
+         s_province, s_city, s_district, s_trading, s_address, s_path, s_linkman,
+         s_phone, s_business_hours, s_brief)
+        values (#{fShop.sName},#{fShop.sReserve},#{fShop.sServe},
+        #{fShop.sLabel},#{fShop.sLogo},#{fShop.sBackImg},#{fShop.sProductImg},
+        #{fShop.sEnvironmentImg},#{fShop.sElseImg},#{fShop.sBusiness},
+        #{fShop.sProvince},#{fShop.sCity},#{fShop.sDistrict},#{fShop.sTrading},
+        #{fShop.sAddress},#{fShop.sPath},#{fShop.sLinkman},#{fShop.sPhone},
+        #{fShop.sBusinessHours},#{fShop.sBrief});
+    </insert>
+    <!--门店资料更新-->
+    <update id="updateFShopBysId">
+        update f_shop set s_logo = #{fShop.sLogo}, s_back_img = #{fShop.sBackImg},
+        s_product_img = #{fShop.sProductImg}, s_environment_img = #{fShop.sEnvironmentImg},
+        s_else_img = #{fShop.sElseImg}, s_address = #{fShop.sAddress}, s_path = #{fShop.sPath},
+        s_linkman = #{fShop.sLinkman}, s_phone = #{fShop.sPhone}, s_business_hours = #{fShop.sBusinessHours},
+        s_brief = #{fShop.sBrief}
+        where s_id = #{fShop.sId}
+        and delete_status = 1;
+    </update>
+    <!--门店下架-->
+    <update id="updatesStatusOut">
+        <!--insert into f_audit(s_id, a_name, a_city, a_business, a_type)
+        values (#{fShop.sId},#{fShop.sName},#{fShop.sCity},#{fShop.sBusiness},5);-->
+        update f_shop set s_status = 0
+        where s_status = 1
+        and delete_status = 1
+        and s_id = #{sId};
+    </update>
+    <!--门店上架-->
+    <update id="updatesStatusUp">
+        update f_shop set s_status = 1
+        where s_status = 0
+        and delete_status = 1
+        and s_id = #{sId};
+    </update>
+    <!--门店删除-->
+    <update id="updateDeleteStatus">
+        update f_shop set delete_status = 0 where delete_status = 1 and s_id = #{sId};
+    </update>
+
+</mapper>

@@ -15,8 +15,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <junit.version>4.12</junit.version>
     <spring.version>5.2.8.RELEASE</spring.version>
     <mysql.version>8.0.21</mysql.version>
@@ -28,6 +28,8 @@
     <cglib.version>3.1</cglib.version>
     <hibernate-validator.version>6.0.20.Final</hibernate-validator.version>
     <cors-filter.version>2.9</cors-filter.version>
+    <logback-classic.version>1.2.3</logback-classic.version>
+    <pagehelper.version>5.2.0</pagehelper.version>
   </properties>
 
   <dependencies>
@@ -120,6 +122,24 @@
       <groupId>com.thetransactioncompany</groupId>
       <artifactId>cors-filter</artifactId>
       <version>${cors-filter.version}</version>
+    </dependency>
+    <!--15、分页插件-->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>${pagehelper.version}</version>
+    </dependency>
+    <!--16、spring对单元测试的支持-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <!--17、日志相关-->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>${logback-classic.version}</version>
     </dependency>
   </dependencies>
 
