@@ -24,7 +24,7 @@ public class FShopServiceImpl implements FShopService {
     @Transactional
     public List<FShopSelectVo> selectFShopList(int status, int pageNum, int pageSize) {
         List<FShop> fShops = fShopMapper.selectFShopList(status, pageNum, pageSize);
-        if(fShops == null){
+        if(fShops.size() < 1){
             throw new ServiceException(ResultCodeEnum.SYSTEM_INNER_ERROR);
         }
         List<FShopSelectVo> fShopVos = BeanConvertUtils.convertListTo(fShops, FShopSelectVo::new);

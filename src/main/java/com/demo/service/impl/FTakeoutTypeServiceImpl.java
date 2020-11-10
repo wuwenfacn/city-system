@@ -21,7 +21,7 @@ public class FTakeoutTypeServiceImpl implements FTakeoutTypeService {
     @Transactional
     public List<FTakeoutType> selectFTakeoutTypeList() {
         List<FTakeoutType> fTakeoutTypes = fTakeoutTypeMapper.selectFTakeoutTypeList();
-        if(fTakeoutTypes == null){
+        if(fTakeoutTypes.size() < 1){
             throw new ServiceException(ResultCodeEnum.SYSTEM_INNER_ERROR);
         }
         return fTakeoutTypes;

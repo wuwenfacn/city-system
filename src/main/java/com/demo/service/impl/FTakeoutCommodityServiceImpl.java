@@ -21,7 +21,7 @@ public class FTakeoutCommodityServiceImpl implements FTakeoutCommodityService {
     @Transactional
     public List<FTakeoutCommodity> selectFTakeoutCommodityList() {
         List<FTakeoutCommodity> fTakeoutCommodities = fTakeoutCommodityMapper.selectFTakeoutCommodityList();
-        if(fTakeoutCommodities == null){
+        if(fTakeoutCommodities.size() < 1){
             throw new ServiceException(ResultCodeEnum.SYSTEM_INNER_ERROR);
         }
         return fTakeoutCommodities;

@@ -93,4 +93,12 @@ public class BaseResult<T> {
         baseResult.setRetMsg(retMsg);
         return baseResult;
     }
+
+    public static <T> BaseResult<T> error(int retCode, String retMsg, String tips) {
+        BaseResult<T> baseResult = new BaseResult<>();
+        baseResult.setRetCode(retCode);
+        baseResult.setRetMsg(retMsg);
+        baseResult.setTips(tips);
+        return baseResult;
+    }
 }

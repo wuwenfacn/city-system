@@ -9,6 +9,7 @@ import com.demo.commons.vo.FShopSelectVo;
 import com.demo.entity.FAudit;
 import com.demo.mapper.FAuditMapper;
 import com.demo.service.FAuditService;
+import com.mysql.cj.util.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -64,7 +65,7 @@ public class FAuditServiceImpl implements FAuditService {
     @Transactional
     public List<FAuditSelectVo> selectFAuditList(int aStatus) {
         List<FAudit> fAudits = fAuditMapper.selectFAuditList(aStatus);
-        if(fAudits == null){
+        if(fAudits.size() < 1){
             throw new ServiceException(ResultCodeEnum.SYSTEM_INNER_ERROR);
         }
         List<FAuditSelectVo> fAuditSelectVos = BeanConvertUtils.convertListTo(fAudits, FAuditSelectVo::new);

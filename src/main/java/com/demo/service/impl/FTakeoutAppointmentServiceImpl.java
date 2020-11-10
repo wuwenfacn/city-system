@@ -21,7 +21,7 @@ public class FTakeoutAppointmentServiceImpl implements FTakeoutAppointmentServic
     @Transactional
     public List<FTakeoutAppointment> selectFTakeoutAppointmentList() {
         List<FTakeoutAppointment> fTakeoutAppointments = fTakeoutAppointmentMapper.selectFTakeoutAppointmentList();
-        if(fTakeoutAppointments == null){
+        if(fTakeoutAppointments.size() < 1){
             throw new ServiceException(ResultCodeEnum.SYSTEM_INNER_ERROR);
         }
         return fTakeoutAppointments;
