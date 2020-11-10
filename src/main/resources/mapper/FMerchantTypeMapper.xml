@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.FMerchantTypeMapper">
+
+    <insert id="insertFMerchantType">
+        insert into
+        f_merchant_type(m_type, m_office_time, m_closing_time, m_mode, m_shipping_information, m_notice)
+        values (#{fMerchantType.mType},#{fMerchantType.mOfficeTime},#{fMerchantType.mClosingTime},
+        #{fMerchantType.mMode},#{fMerchantType.mShippingInformation},#{fMerchantType.mNotice});
+    </insert>
+</mapper>

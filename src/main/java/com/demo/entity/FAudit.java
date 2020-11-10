@@ -19,7 +19,7 @@ import lombok.Data;
         a_trading varchar(64) not null comment '商圈',
         a_address varchar(255) not null comment '详细地址',
         a_submission_time timestamp comment '提交时间',
-        a_type int default null comment '审核类型，1表示发布申请，2表示修改审核申请，3表示资料更新申请，4表示上架申请，5表示下架申请',
+        a_type int default null comment '审核类型，1表示发布申请，2表示修改审核申请，3表示资料更新申请，4表示上架申请，5表示下架申请，6表示删除申请',
         a_status int default 2 comment '审核状态，0表示取消，1表示已审核，2表示未审核',
         a_pass int default null comment '是否通过，0表示未通过，1表示已通过',
         a_pass_reason varchar(255) default null comment '是否通过的理由'

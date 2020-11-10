@@ -15,11 +15,13 @@ import java.util.List;
 public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public BaseResult<Object> handException(Exception ex) {
+        ex.printStackTrace();
         return BaseResult.error();
     }
 
     @ExceptionHandler(BindException.class)
     public BaseResult<Object> handleBindException(BindException exception) {
+        exception.printStackTrace();
         List<FieldError> allErrors = exception.getFieldErrors();
         StringBuilder sb = new StringBuilder();
         for (FieldError errorMessage : allErrors) {

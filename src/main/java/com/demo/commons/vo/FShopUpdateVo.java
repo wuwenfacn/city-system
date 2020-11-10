@@ -6,6 +6,7 @@ import java.util.Date;
 
 @Data
 public class FShopUpdateVo {
+
     private Integer sId;
 
     private String sLogo;

@@ -30,6 +30,8 @@
     <cors-filter.version>2.9</cors-filter.version>
     <logback-classic.version>1.2.3</logback-classic.version>
     <pagehelper.version>5.2.0</pagehelper.version>
+    <jsqlparser.version>0.9.5</jsqlparser.version>
+    <servlet-api.version>2.5</servlet-api.version>
   </properties>
 
   <dependencies>
@@ -129,17 +131,29 @@
       <artifactId>pagehelper</artifactId>
       <version>${pagehelper.version}</version>
     </dependency>
-    <!--16、spring对单元测试的支持-->
+    <!--16、pagehelper的依赖包:jsqlparser-->
+    <dependency>
+      <groupId>com.github.jsqlparser</groupId>
+      <artifactId>jsqlparser</artifactId>
+      <version>${jsqlparser.version}</version>
+    </dependency>
+    <!--17、spring对单元测试的支持-->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-test</artifactId>
       <version>${spring.version}</version>
     </dependency>
-    <!--17、日志相关-->
+    <!--18、日志相关-->
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>${logback-classic.version}</version>
+    </dependency>
+    <!--19、servlet-->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>${servlet-api.version}</version>
     </dependency>
   </dependencies>
 

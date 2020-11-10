@@ -17,12 +17,12 @@ public class FShopController {
     @Resource
     FShopService fShopService;
 
-    @GetMapping("/select")
     /*
     * status：上线状态，0表示下线，1表示上线
     * pageNum：显示的页数
     * pageSize：每页显示的条数
     * */
+    @GetMapping("/uporout")
     public BaseResult<List<FShopSelectVo>> selectFShopList(int status, int pageNum, int pageSize){
         List<FShopSelectVo> fShopVos = fShopService.selectFShopList(status, pageNum, pageSize);
         return BaseResult.success(fShopVos);
@@ -55,7 +55,7 @@ public class FShopController {
             "sbrief": "3"
     }*/
 
-    @PostMapping("/insert")
+    @PostMapping("/insertfshop")
     public BaseResult insertFShop(@RequestBody FShopInsertVo fShop){
         int num = fShopService.insertFShop(fShop);
         return BaseResult.success(num);
@@ -80,7 +80,7 @@ public class FShopController {
         "sbrief": "6"
     }*/
 
-    @PutMapping("/update")
+    @PutMapping("/updatefshop")
     public BaseResult updateFShopBysId(@RequestBody FShopUpdateVo fShop){
         int num = fShopService.updateFShopBysId(fShop);
         return BaseResult.success(num);
@@ -89,7 +89,7 @@ public class FShopController {
     /*
     * 门店下架
     * */
-    @PutMapping("/out")
+    @PutMapping("/outfshop")
     public BaseResult updatesStatusOut(int sId){
         int num = fShopService.updatesStatusOut(sId);
         return BaseResult.success(num);
@@ -98,7 +98,7 @@ public class FShopController {
     /*
      * 门店上架
      * */
-    @PutMapping("/up")
+    @PutMapping("/upfshop")
     public BaseResult updatesStatusUp(int sId){
         int num = fShopService.updatesStatusUp(sId);
         return BaseResult.success(num);
@@ -107,7 +107,7 @@ public class FShopController {
     /*
      * 门店删除
      * */
-    @PutMapping("/delete")
+    @PutMapping("/deletefshop")
     public BaseResult updateDeleteStatus(int sId){
         int num = fShopService.updateDeleteStatus(sId);
         return BaseResult.success(num);

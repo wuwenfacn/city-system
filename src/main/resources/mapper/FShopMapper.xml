@@ -26,6 +26,7 @@
         <result property="sBusinessHours" column="s_business_hours"></result>
         <result property="sBrief" column="s_brief"></result>
     </resultMap>
+
     <!--显示所有的门店信息-->
     <select id="selectFShopList" resultMap="FShopMapper">
         select s_id, s_back_img, s_name, s_city, s_business
@@ -34,6 +35,7 @@
         and delete_status = 1
         limit #{pageNum},#{pageSize};
     </select>
+
     <!--新增门店-->
     <insert id="insertFShop">
         insert into f_shop(s_name, s_reserve, s_serve, s_label, s_logo,
@@ -47,6 +49,7 @@
         #{fShop.sAddress},#{fShop.sPath},#{fShop.sLinkman},#{fShop.sPhone},
         #{fShop.sBusinessHours},#{fShop.sBrief});
     </insert>
+
     <!--门店资料更新-->
     <update id="updateFShopBysId">
         update f_shop set s_logo = #{fShop.sLogo}, s_back_img = #{fShop.sBackImg},
@@ -57,25 +60,58 @@
         where s_id = #{fShop.sId}
         and delete_status = 1;
     </update>
-    <!--门店下架-->
+
+    <!--门店下架，提交到审核表进行审核，审核通过才允许下架-->
     <update id="updatesStatusOut">
-        <!--insert into f_audit(s_id, a_name, a_city, a_business, a_type)
-        values (#{fShop.sId},#{fShop.sName},#{fShop.sCity},#{fShop.sBusiness},5);-->
-        update f_shop set s_status = 0
+        insert into
+        f_audit(s_id, a_name, a_reserve, a_serve, a_label, a_business, a_province, a_city, a_district,
+        a_trading, a_address, a_submission_time, a_type)
+        select
+        s_id, s_name a_name, s_reserve a_reserve, s_serve a_serve, s_label a_label,
+        s_business a_business, s_province a_province, s_city a_city, s_district a_district,
+        s_trading a_trading, s_address a_address, now(), 5
+        from f_shop
+        where s_id = #{sId}
+        and delete_status = 1
+        and s_status = 1;
+        <!--update f_shop set s_status = 0
         where s_status = 1
         and delete_status = 1
-        and s_id = #{sId};
+        and s_id = #{sId};-->
     </update>
-    <!--门店上架-->
+
+    <!--门店上架，提交到审核表进行审核，审核通过才允许上架-->
     <update id="updatesStatusUp">
-        update f_shop set s_status = 1
+        insert into
+        f_audit(s_id, a_name, a_reserve, a_serve, a_label, a_business, a_province, a_city, a_district,
+        a_trading, a_address, a_submission_time, a_type)
+        select
+        s_id, s_name a_name, s_reserve a_reserve, s_serve a_serve, s_label a_label,
+        s_business a_business, s_province a_province, s_city a_city, s_district a_district,
+        s_trading a_trading, s_address a_address, now(), 4
+        from f_shop
+        where s_id = #{sId}
+        and delete_status = 1
+        and s_status = 0;
+        <!--update f_shop set s_status = 1
         where s_status = 0
         and delete_status = 1
-        and s_id = #{sId};
+        and s_id = #{sId};-->
     </update>
-    <!--门店删除-->
+
+    <!--门店删除，提交到审核表进行审核，审核通过才允许删除-->
     <update id="updateDeleteStatus">
-        update f_shop set delete_status = 0 where delete_status = 1 and s_id = #{sId};
+        insert into
+        f_audit(s_id, a_name, a_reserve, a_serve, a_label, a_business, a_province, a_city, a_district,
+        a_trading, a_address, a_submission_time, a_type)
+        select
+        s_id, s_name a_name, s_reserve a_reserve, s_serve a_serve, s_label a_label,
+        s_business a_business, s_province a_province, s_city a_city, s_district a_district,
+        s_trading a_trading, s_address a_address, now(), 6
+        from f_shop
+        where s_id = #{sId}
+        and delete_status = 1;
+        <!--update f_shop set delete_status = 0 where delete_status = 1 and s_id = #{sId};-->
     </update>
 
 </mapper>

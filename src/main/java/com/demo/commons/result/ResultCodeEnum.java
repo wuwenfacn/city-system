@@ -1,9 +1,11 @@
 package com.demo.commons.result;
 
+import lombok.Getter;
+
 /**
- * @author zhangwei
- * @since 1.0.0
+ * 错误信息封装
  */
+@Getter
 public enum ResultCodeEnum {
     /**
      * 返回成功
@@ -50,7 +52,7 @@ public enum ResultCodeEnum {
     /* 提示语 "系统繁忙，请稍后重试"*/
     SYSTEM_INNER_ERROR(40001, "system error", "系统繁忙，请稍后重试"),
     /*未知错误 请稍后在试*/
-    SYSTEM_UNKNOW_ERROR(40002, "system unknow error", "未知错误 请稍后在试"),
+    SYSTEM_UNKNOW_ERROR(40002, "system unknow error", "未知错误，请稍后在试"),
     /*内部系统接口调用异常*/
     INNER_INVOKE_ERROR(50001, "inner invoke error", "内部系统接口调用异常"),
     /*外部系统接口调用异常*/

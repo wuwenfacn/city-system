@@ -9,10 +9,17 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface FShopService {
+
     List<FShopSelectVo> selectFShopList(int status, int pageNum, int pageSize);
+
     int insertFShop(FShopInsertVo fShop);
+
     int updateFShopBysId(FShopUpdateVo fShop);
+
     int updatesStatusOut(int sId);
+
     int updatesStatusUp(int sId);
+
     int updateDeleteStatus(int sId);
+
 }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.FTakeoutTypeMapper">
+    <resultMap id="FTakeoutTypeMapper" type="com.demo.entity.FTakeoutType">
+        <id property="tId" column="t_id"></id>
+        <result property="tName" column="t_name"></result>
+        <result property="tSort" column="t_sort"></result>
+        <result property="tState" column="t_state"></result>
+    </resultMap>
+
+    <select id="selectFTakeoutTypeList" resultMap="FTakeoutTypeMapper">
+        select t_id, t_name, t_sort, t_state
+        from f_takeout_type
+        where delete_status = 1;
+    </select>
+
+    <insert id="insertFTakeoutType">
+        insert into f_takeout_type(t_name, t_sort, t_state)
+        values (#{fTakeoutType.tName},#{fTakeoutType.tSort},#{fTakeoutType.tState});
+    </insert>
+
+    <update id="updateFTakeoutTypeById">
+        update f_takeout_type
+        set t_name = #{fTakeoutType.tName}, t_sort = #{fTakeoutType.tSort}, t_state = #{fTakeoutType.tState}
+        where t_id = #{fTakeoutType.tId}
+        and delete_status = 1;
+    </update>
+
+    <update id="deleteFTakeoutTypeById">
+        update f_takeout_type
+        set delete_status = 0
+        where t_id = #{tId}
+        and delete_status = 1;
+    </update>
+</mapper>
