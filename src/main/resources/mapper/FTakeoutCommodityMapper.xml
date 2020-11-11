@@ -4,11 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.demo.mapper.FTakeoutCommodityMapper">
     <resultMap id="FTakeoutCommodityMapper" type="com.demo.entity.FTakeoutCommodity">
-        <id property="cId" column="c_id"></id>
-        <result property="cName" column="c_name"></result>
-        <result property="cType" column="c_type"></result>
-        <result property="cImg" column="c_img"></result>
-        <result property="cPrice" column="c_price"></result>
+        <id property="cId" column="c_id"/>
+        <result property="cName" column="c_name"/>
+        <result property="cType" column="c_type"/>
+        <result property="cImg" column="c_img"/>
+        <result property="cPrice" column="c_price"/>
     </resultMap>
 
     <select id="selectFTakeoutCommodityList" resultMap="FTakeoutCommodityMapper">
@@ -19,22 +19,24 @@
 
     <insert id="insertFTakeoutCommodity">
         insert into f_takeout_commodity(c_name, c_type, c_img, c_price)
-        values (#{fTakeoutCommodityVo.cName},#{fTakeoutCommodityVo.cType},
-        #{fTakeoutCommodityVo.cImg},#{fTakeoutCommodityVo.cPrice});
+        values (#{fTakeoutCommodityVo.cName}, #{fTakeoutCommodityVo.cType},
+                #{fTakeoutCommodityVo.cImg}, #{fTakeoutCommodityVo.cPrice});
     </insert>
 
     <update id="updateFTakeoutCommodity">
         update f_takeout_commodity
-        set c_name = #{fTakeoutCommodity.cName},c_type = #{fTakeoutCommodity.cType},
-        c_img = #{fTakeoutCommodity.cImg},c_price = #{fTakeoutCommodity.cPrice}
+        set c_name  = #{fTakeoutCommodity.cName},
+            c_type  = #{fTakeoutCommodity.cType},
+            c_img   = #{fTakeoutCommodity.cImg},
+            c_price = #{fTakeoutCommodity.cPrice}
         where c_id = #{fTakeoutCommodity.cId}
-        and delete_status = 1;
+          and delete_status = 1;
     </update>
 
     <update id="deleteFTakeoutCommodityById">
         update f_takeout_commodity
         set delete_status = 0
         where c_id = #{cId}
-        and delete_status = 1;
+          and delete_status = 1;
     </update>
 </mapper>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.FUserAdminMapper">
+    <resultMap id="FUserAdminMapper" type="com.demo.entity.FUser">
+        <id property="uId" column="u_id"/>
+        <result property="uUsername" column="u_username"/>
+        <result property="uPassword" column="u_password"/>
+        <result property="shopName" column="shop_name"/>
+        <result property="businessLicense" column="business_license"/>
+        <result property="otherCertification" column="other_certification"/>
+        <result property="brand" column="brand"/>
+        <result property="shopImg" column="shop_img"/>
+        <result property="shopType" column="shop_type"/>
+        <result property="province" column="province"/>
+        <result property="city" column="city"/>
+        <result property="district" column="district"/>
+        <result property="tradingArea" column="trading_area"/>
+        <result property="address" column="address"/>
+        <result property="phone" column="phone"/>
+        <result property="contactName" column="contact_name"/>
+        <result property="businessTime" column="business_time"/>
+    </resultMap>
+
+    <!--展示所有的用户信息-->
+    <select id="selectFUserList" resultMap="FUserAdminMapper">
+        select u_id,
+               u_username,
+               u_password,
+               shop_name,
+               business_license,
+               other_certification,
+               brand,
+               shop_img,
+               shop_type,
+               province,
+               city,
+               district,
+               trading_area,
+               address,
+               phone,
+               contact_name,
+               business_time
+        from f_user
+        where delete_status = 1;
+    </select>
+
+    <!--删除用户-->
+    <update id="deleteUser">
+        update f_user
+        set delete_status = 0
+        where delete_status = 1
+        and u_id = #{uId};
+    </update>
+
+</mapper>

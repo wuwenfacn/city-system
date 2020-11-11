@@ -16,10 +16,12 @@ public enum ResultCodeEnum {
     UN_LOGIN(40001, "no login", "未登录"),
     UN_AUTH(40003, "no auth  account", "未授权"),
 
+    /*用户已登录*/
+    ACCOUNT_IS_LOGIN(10000, "user is login", "用户已登录"),
     /*用户未登录*/
     ACCOUNT_NOT_LOGIN(10001, "user no login", "用户未登录"),
     /*账号不存在或密码错误*/
-    ACCOUNT_LOGIN_ERROR(10002, "user login error", "账号不存在或密码错误"),
+    ACCOUNT_LOGIN_ERROR(10002, "user login error", "账号或密码错误"),
     /*账号已存在*/
     ACCOUNT_IS_EXISTENT(10003, "account is existent", "账号已存在"),
 

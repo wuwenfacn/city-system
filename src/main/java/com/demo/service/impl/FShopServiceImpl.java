@@ -22,8 +22,8 @@ public class FShopServiceImpl implements FShopService {
 
     @Override
     @Transactional
-    public List<FShopSelectVo> selectFShopList(int status, int pageNum, int pageSize) {
-        List<FShop> fShops = fShopMapper.selectFShopList(status, pageNum, pageSize);
+    public List<FShopSelectVo> selectFShopList(int status) {
+        List<FShop> fShops = fShopMapper.selectFShopList(status);
         if(fShops.size() < 1){
             throw new ServiceException(ResultCodeEnum.SYSTEM_INNER_ERROR);
         }

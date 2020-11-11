@@ -19,12 +19,10 @@ public class FShopController {
 
     /*
     * status：上线状态，0表示下线，1表示上线
-    * pageNum：显示的页数
-    * pageSize：每页显示的条数
     * */
     @GetMapping("/uporout")
-    public BaseResult<List<FShopSelectVo>> selectFShopList(int status, int pageNum, int pageSize){
-        List<FShopSelectVo> fShopVos = fShopService.selectFShopList(status, pageNum, pageSize);
+    public BaseResult<List<FShopSelectVo>> selectFShopList(int status){
+        List<FShopSelectVo> fShopVos = fShopService.selectFShopList(status);
         return BaseResult.success(fShopVos);
     }
 

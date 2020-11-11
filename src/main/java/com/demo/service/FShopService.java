@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface FShopService {
 
-    List<FShopSelectVo> selectFShopList(int status, int pageNum, int pageSize);
+    List<FShopSelectVo> selectFShopList(int status);
 
     int insertFShop(FShopInsertVo fShop);
 

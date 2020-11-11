@@ -10,10 +10,8 @@ import java.util.List;
 public interface FShopMapper {
     /*
     * status：上线状态，0表示下线，1表示上线
-    * pageNum：显示的页数
-    * pageSize：每页显示的条数
     * */
-    List<FShop> selectFShopList(@Param("status") int status,@Param("pageNum") int pageNum,@Param("pageSize") int pageSize);
+    List<FShop> selectFShopList(@Param("status") int status);
 
     /*
     * 添加新门店
