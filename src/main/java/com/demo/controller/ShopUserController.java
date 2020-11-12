@@ -19,16 +19,17 @@ public class ShopUserController {
     * */
     @PostMapping("/login")
     public BaseResult login(@RequestBody ShopUserLoginVo shopUserLoginVo, HttpServletRequest request){
-        ShopUserLoginVo login = shopUserService.login(shopUserLoginVo, request);
-        return BaseResult.success(login);
+        Boolean flag = shopUserService.login(shopUserLoginVo, request);
+        return BaseResult.success(flag);
     }
 
     /*
      * 注销功能
      * */
     @GetMapping("/off")
-    public String off(HttpServletRequest request){
-        return shopUserService.off(request);
+    public BaseResult off(HttpServletRequest request){
+        String off = shopUserService.off(request);
+        return BaseResult.success(off);
     }
 
     /*{

@@ -11,7 +11,7 @@ public interface ShopUserMapper {
     /*
     * 登录，传递账号和密码
     * */
-    ShopUser login(@Param("shopUserLoginVo") ShopUserLoginVo shopUserLoginVo);
+    ShopUser login(@Param("username") String username);
 
     /*
      * 注册，传递除了id的其他数据

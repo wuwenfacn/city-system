@@ -4,6 +4,7 @@ import com.demo.commons.vo.ShopUserAlterPasswordVo;
 import com.demo.commons.vo.ShopUserAlterUserVo;
 import com.demo.commons.vo.ShopUserLoginVo;
 import com.demo.commons.vo.ShopUserRegisterVo;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,7 +13,7 @@ public interface ShopUserService {
     /*
      * 登录功能
      * */
-    ShopUserLoginVo login(ShopUserLoginVo shopUserLoginVo, HttpServletRequest request);
+    Boolean login(ShopUserLoginVo shopUserLoginVo, HttpServletRequest request);
 
     /*
      * 注销功能

@@ -8,12 +8,11 @@
         <result property="password" column="u_password"/>
     </resultMap>
 
-    <!--登录功能，根据用户输入的账号和密码，传递到数据库中进行查找-->
+    <!--登录功能，根据用户输入的账号，传递到数据库中进行查找-->
     <select id="login" resultMap="FUserMapper">
         select u_username, u_password
         from f_user
-        where u_username = #{shopUserLoginVo.username}
-        and u_password = #{shopUserLoginVo.password}
+        where u_username = #{username}
         and delete_status = 1;
     </select>
 
