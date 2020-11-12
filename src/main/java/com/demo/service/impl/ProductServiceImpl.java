@@ -1,6 +1,8 @@
 package com.demo.service.impl;
 
+import com.demo.commons.exception.ServiceException;
 import com.demo.commons.requestEntity.ProductRequest;
+import com.demo.commons.result.ResultCodeEnum;
 import com.demo.entity.WProduct;
 import com.demo.mapper.WProductMapper;
 import com.demo.service.ProductService;
@@ -32,6 +34,9 @@ public class ProductServiceImpl implements ProductService {
         WProduct wProduct = new WProduct();
         BeanUtils.copyProperties(productRequest,wProduct);
         int i = productMapper.insertSelective(wProduct);
+        if (i==0){
+            throw new ServiceException(ResultCodeEnum.SQL_INSERT_ERROR);
+        }
         return i>0;
     }
 
@@ -45,6 +50,9 @@ public class ProductServiceImpl implements ProductService {
         WProduct wProduct = new WProduct();
         BeanUtils.copyProperties(productRequest,wProduct);
         int i = productMapper.updateByPrimaryKeySelective(wProduct);
+        if (i==0){
+            throw new ServiceException(ResultCodeEnum.SQL_UPDATE_ERROR);
+        }
         return i>0;
 
     }
@@ -57,6 +65,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public boolean deleteProduct(Integer productId) {
         int i = productMapper.deleteByPrimaryKey(productId);
+        if (i==0){
+            throw new ServiceException(ResultCodeEnum.SQL_DELETE_ERROR);
+        }
         return i>0;
     }
 
@@ -73,6 +84,9 @@ public class ProductServiceImpl implements ProductService {
         BeanUtils.copyProperties(productRequest,wProduct);
         PageHelper.startPage(page,size);
         List<WProduct> wProducts = productMapper.selecAll(wProduct);
+        if (wProducts==null) {
+            throw new ServiceException(ResultCodeEnum.SQL_SELECT_ERROR);
+        }
         PageInfo pageInfo = new PageInfo(wProducts);
         List list = pageInfo.getList();
         return list;

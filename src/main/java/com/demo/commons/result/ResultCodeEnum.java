@@ -64,8 +64,16 @@ public enum ResultCodeEnum {
     /*接口地址无效*/
     NO_FOUND_ERROR(50004, "no found error", "接口地址无效"),
     /* 数据错误 */
-    DATA_IS_WRONG(60001, "data is wrong", "数据错误");
+    DATA_IS_WRONG(60001, "data is wrong", "数据错误"),
 
+    /** 数据插入失败 */
+    SQL_INSERT_ERROR(70001,"insert failed","数据添加失败"),
+    /** 数据删除失败*/
+    SQL_DELETE_ERROR(70001,"insert failed","数据删除失败"),
+    /** 数据修改失败*/
+    SQL_UPDATE_ERROR(70001,"insert failed","数据修改失败"),
+    /** 没有查询到数据*/
+    SQL_SELECT_ERROR(70001,"insert failed","没有查询到数据");
 
     /**
      * 返回码

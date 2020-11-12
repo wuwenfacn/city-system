@@ -1,6 +1,8 @@
 package com.demo.service.impl;
 
+import com.demo.commons.exception.ServiceException;
 import com.demo.commons.requestEntity.OrderRequest;
+import com.demo.commons.result.ResultCodeEnum;
 import com.demo.commons.vo.OrderVo;
 import com.demo.entity.WOrder;
 import com.demo.mapper.WOrderMapper;
@@ -39,9 +41,9 @@ public class OrderServiceImpl implements OrderService {
     public List getList(OrderRequest orderRequest, int page, int size) {
         PageHelper.startPage(page,size);
         List<WOrder> wOrder = orderMapper.selectOrderByPid(orderRequest);
-//        List<OrderVo> voList = new ArrayList();
-//        BeanUtils.copyProperties(wOrder,voList);
-//        PageInfo<List> info = new PageInfo<List>(Collections.singletonList(voList));
+        if (wOrder==null) {
+            throw new ServiceException(ResultCodeEnum.SQL_SELECT_ERROR);
+        }
         PageInfo info = new PageInfo(wOrder);
         List list = info.getList();
         return list;
