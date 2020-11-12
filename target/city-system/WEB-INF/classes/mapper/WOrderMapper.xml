@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.WOrderMapper">
+  <resultMap id="BaseResultMap" type="com.demo.entity.WOrder">
+    <!--@mbg.generated-->
+    <!--@Table w_order-->
+    <id column="o_id" jdbcType="INTEGER" property="oId" />
+    <result column="o_discribe" jdbcType="VARCHAR" property="oDiscribe" />
+    <result column="o_no" jdbcType="VARCHAR" property="oNo" />
+    <result column="o_createtime" jdbcType="TIMESTAMP" property="oCreatetime" />
+    <result column="o_type" jdbcType="INTEGER" property="oType" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="o_price" jdbcType="DECIMAL" property="oPrice" />
+    <result column="u_id" jdbcType="INTEGER" property="uId" />
+    <result column="o_diliver" jdbcType="VARCHAR" property="oDiliver" />
+    <!--订单对产品一对多-->
+    <collection property="products" resultMap="com.demo.mapper.WProductMapper.BaseResultMap"/>
+
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    o_id, o_discribe, o_no, o_createtime, o_type, `status`, o_price, u_id, o_diliver
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from w_order
+    where o_id = #{oId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from w_order
+    where o_id = #{oId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="o_id" keyProperty="oId" parameterType="com.demo.entity.WOrder" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into w_order (o_discribe, o_no, o_createtime, 
+      o_type, `status`, o_price, 
+      u_id, o_diliver)
+    values (#{oDiscribe,jdbcType=VARCHAR}, #{oNo,jdbcType=VARCHAR}, #{oCreatetime,jdbcType=TIMESTAMP}, 
+      #{oType,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{oPrice,jdbcType=DECIMAL}, 
+      #{uId,jdbcType=INTEGER}, #{oDiliver,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="o_id" keyProperty="oId" parameterType="com.demo.entity.WOrder" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into w_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oDiscribe != null">
+        o_discribe,
+      </if>
+      <if test="oNo != null">
+        o_no,
+      </if>
+      <if test="oCreatetime != null">
+        o_createtime,
+      </if>
+      <if test="oType != null">
+        o_type,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="oPrice != null">
+        o_price,
+      </if>
+      <if test="uId != null">
+        u_id,
+      </if>
+      <if test="oDiliver != null">
+        o_diliver,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oDiscribe != null">
+        #{oDiscribe,jdbcType=VARCHAR},
+      </if>
+      <if test="oNo != null">
+        #{oNo,jdbcType=VARCHAR},
+      </if>
+      <if test="oCreatetime != null">
+        #{oCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oType != null">
+        #{oType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="oPrice != null">
+        #{oPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="uId != null">
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="oDiliver != null">
+        #{oDiliver,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.entity.WOrder">
+    <!--@mbg.generated-->
+    update w_order
+    <set>
+      <if test="oDiscribe != null">
+        o_discribe = #{oDiscribe,jdbcType=VARCHAR},
+      </if>
+      <if test="oNo != null">
+        o_no = #{oNo,jdbcType=VARCHAR},
+      </if>
+      <if test="oCreatetime != null">
+        o_createtime = #{oCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oType != null">
+        o_type = #{oType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="oPrice != null">
+        o_price = #{oPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="uId != null">
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="oDiliver != null">
+        o_diliver = #{oDiliver,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where o_id = #{oId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demo.entity.WOrder">
+    <!--@mbg.generated-->
+    update w_order
+    set o_discribe = #{oDiscribe,jdbcType=VARCHAR},
+      o_no = #{oNo,jdbcType=VARCHAR},
+      o_createtime = #{oCreatetime,jdbcType=TIMESTAMP},
+      o_type = #{oType,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=INTEGER},
+      o_price = #{oPrice,jdbcType=DECIMAL},
+      u_id = #{uId,jdbcType=INTEGER},
+      o_diliver = #{oDiliver,jdbcType=VARCHAR}
+    where o_id = #{oId,jdbcType=INTEGER}
+  </update>
+
+  <!--分页查询 订单-->
+  <select id="selectOrderByPid" resultMap="BaseResultMap">
+    select o.o_id, o_discribe, o_no, o_createtime, o_type, o_price, u_id, o_diliver,
+    wp.p_id, p_name, p_describe, p_shop, p_tag, onsale_time, shelve_time, p_price, p_classification, p_diliver, p_details
+    from w_order o left join w_order_product wop on o.o_id = wop.o_id left join w_product wp on wop.p_id = wp.p_id
+    <trim prefix="where" prefixOverrides="AND|OR">
+      <if test="pId != null and pId !=0">
+        o.o_id in (select o.o_id from w_order_product where wp.p_id=#{pId})
+      </if>
+      <if test="status != null and status != 0">
+        and o.status=#{status}
+      </if>
+      <if test="OType != null and oType != 0">
+        and o.o_type=#{oType}
+      </if>
+    </trim>
+  </select>
+</mapper>

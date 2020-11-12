@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.WProductMapper">
+  <resultMap id="BaseResultMap" type="com.demo.entity.WProduct">
+    <!--@mbg.generated-->
+    <!--@Table w_product-->
+    <id column="p_id" jdbcType="INTEGER" property="pId" />
+    <result column="p_name" jdbcType="VARCHAR" property="pName" />
+    <result column="p_describe" jdbcType="VARCHAR" property="pDescribe" />
+    <result column="p_shop" jdbcType="VARCHAR" property="pShop" />
+    <result column="p_tag" jdbcType="VARCHAR" property="pTag" />
+    <result column="onsale_time" jdbcType="TIMESTAMP" property="onsaleTime" />
+    <result column="shelve_time" jdbcType="TIMESTAMP" property="shelveTime" />
+    <result column="p_price" jdbcType="DECIMAL" property="pPrice" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="p_classification" jdbcType="INTEGER" property="pClassification" />
+    <result column="p_diliver" jdbcType="INTEGER" property="pDiliver" />
+    <result column="p_details" jdbcType="VARCHAR" property="pDetails" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    p_id, p_name, p_describe, p_shop, p_tag, onsale_time, shelve_time, p_price, `status`, 
+    p_classification, p_diliver, p_details
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from w_product
+    where p_id = #{pId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    update w_product set status=0
+    where p_id = #{pId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="p_id" keyProperty="pId" parameterType="com.demo.entity.WProduct" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into w_product (
+        p_name, p_describe, p_shop,
+      p_tag, p_price, p_classification,
+      p_diliver, p_details)
+    values (
+    p_id=#{pId},p_describe=#{pDescribe},p_shop=#{pShop},p_tag=#{pTag},p_price=#{pPrice},p_classification=#{pClassification},
+    p_diliver=#{pDiliver},p_details=#{pDetails}
+    )
+  </insert>
+  <insert id="insertSelective" keyColumn="p_id" keyProperty="pId" parameterType="com.demo.entity.WProduct" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into w_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pName != null">
+        p_name,
+      </if>
+      <if test="pDescribe != null">
+        p_describe,
+      </if>
+      <if test="pShop != null">
+        p_shop,
+      </if>
+      <if test="pTag != null">
+        p_tag,
+      </if>
+      <if test="onsaleTime != null">
+        onsale_time,
+      </if>
+      <if test="shelveTime != null">
+        shelve_time,
+      </if>
+      <if test="pPrice != null">
+        p_price,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="pClassification != null">
+        p_classification,
+      </if>
+      <if test="pDiliver != null">
+        p_diliver,
+      </if>
+      <if test="pDetails != null">
+        p_details,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pName != null">
+        #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pDescribe != null">
+        #{pDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="pShop != null">
+        #{pShop,jdbcType=VARCHAR},
+      </if>
+      <if test="pTag != null">
+        #{pTag,jdbcType=VARCHAR},
+      </if>
+      <if test="onsaleTime != null">
+        #{onsaleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shelveTime != null">
+        #{shelveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pPrice != null">
+        #{pPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="pClassification != null">
+        #{pClassification,jdbcType=INTEGER},
+      </if>
+      <if test="pDiliver != null">
+        #{pDiliver,jdbcType=INTEGER},
+      </if>
+      <if test="pDetails != null">
+        #{pDetails,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.entity.WProduct">
+    <!--@mbg.generated-->
+    update w_product
+    <set>
+      <if test="pName != null">
+        p_name = #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pDescribe != null">
+        p_describe = #{pDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="pShop != null">
+        p_shop = #{pShop,jdbcType=VARCHAR},
+      </if>
+      <if test="pTag != null">
+        p_tag = #{pTag,jdbcType=VARCHAR},
+      </if>
+      <if test="onsaleTime != null">
+        onsale_time = #{onsaleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shelveTime != null">
+        shelve_time = #{shelveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pPrice != null">
+        p_price = #{pPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="pClassification != null">
+        p_classification = #{pClassification,jdbcType=INTEGER},
+      </if>
+      <if test="pDiliver != null">
+        p_diliver = #{pDiliver,jdbcType=INTEGER},
+      </if>
+      <if test="pDetails != null">
+        p_details = #{pDetails,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where p_id = #{pId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demo.entity.WProduct">
+    <!--@mbg.generated-->
+    update w_product
+    set p_name = #{pName,jdbcType=VARCHAR},
+      p_describe = #{pDescribe,jdbcType=VARCHAR},
+      p_shop = #{pShop,jdbcType=VARCHAR},
+      p_tag = #{pTag,jdbcType=VARCHAR},
+      onsale_time = #{onsaleTime,jdbcType=TIMESTAMP},
+      shelve_time = #{shelveTime,jdbcType=TIMESTAMP},
+      p_price = #{pPrice,jdbcType=DECIMAL},
+      `status` = #{status,jdbcType=INTEGER},
+      p_classification = #{pClassification,jdbcType=INTEGER},
+      p_diliver = #{pDiliver,jdbcType=INTEGER},
+      p_details = #{pDetails,jdbcType=VARCHAR}
+    where p_id = #{pId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selecAll" resultMap="BaseResultMap">
+    select p_id, p_name, p_describe, p_shop, p_tag, onsale_time,
+           shelve_time, p_price, status, p_classification, p_diliver, p_details from w_product
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      status=1
+      <if test="pId != null">
+        and p_id=#{pId}
+      </if>
+      <if test="pName != null and pName != ''">
+        and p_name=#{pName}
+      </if>
+
+    </trim>
+  </select>
+</mapper>

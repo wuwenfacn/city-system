@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <!--spring事务的配置-->
+    <!--1、注册DataSourceTransactionManager事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--2、druid连接池-->
+    <!--和spring-mybatis.xml重复了，所以不用设置-->
+    <!--<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"/>-->
+    <!--3、开启事务注解的支持-->
+    <!--名字如果是transactionManager可以不写-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>

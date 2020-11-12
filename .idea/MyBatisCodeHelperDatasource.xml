@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MyBatisCodeHelperDatasource">
+    <option name="projectProfile">
+      <ProjectProfile>
+        <option name="javaMapperPackage" value="com.demo.mapper" />
+        <option name="javaMapperPath" value="$PROJECT_DIR$/src/main/java" />
+        <option name="javaModelPackage" value="com.demo.entity" />
+        <option name="javaModelPath" value="$PROJECT_DIR$/src/main/java" />
+        <option name="lastDatabaseCrudChooseModuleName" value="city-system" />
+        <option name="lombokDataAnnotation" value="true" />
+        <option name="moduleNameToPackageAndPathMap">
+          <map>
+            <entry key="city-system">
+              <value>
+                <UserPackageAndPathInfoByModule>
+                  <option name="javaMapperPackage" value="com.demo.mapper" />
+                  <option name="javaMapperPath" value="$PROJECT_DIR$/src/main/java" />
+                  <option name="javaModelPacakge" value="com.demo.entity" />
+                  <option name="javaModelPath" value="$PROJECT_DIR$/src/main/java" />
+                  <option name="xmlPackage" value="mapper" />
+                  <option name="xmlPath" value="$PROJECT_DIR$/src/main/resources" />
+                </UserPackageAndPathInfoByModule>
+              </value>
+            </entry>
+          </map>
+        </option>
+        <option name="tableGenerateConfigs">
+          <map>
+            <entry key="city_system:coupon_record">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="id" />
+                  <option name="javaModelName" value="CouponRecord" />
+                  <option name="moduleName" value="city-system" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="city_system:groupbuying">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="gid" />
+                  <option name="javaModelName" value="Groupbuying" />
+                  <option name="moduleName" value="city-system" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="city_system:w_activity">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="a_id" />
+                  <option name="javaModelName" value="WActivity" />
+                  <option name="moduleName" value="city-system" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="city_system:w_coupon">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="c_id" />
+                  <option name="javaModelName" value="WCoupon" />
+                  <option name="moduleName" value="city-system" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="city_system:w_order">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="o_id" />
+                  <option name="javaModelName" value="WOrder" />
+                  <option name="moduleName" value="city-system" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="city_system:w_product">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="p_id" />
+                  <option name="javaModelName" value="WProduct" />
+                  <option name="moduleName" value="city-system" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+          </map>
+        </option>
+        <option name="xmlMapperPackage" value="mapper" />
+        <option name="xmlMapperPath" value="$PROJECT_DIR$/src/main/resources" />
+      </ProjectProfile>
+    </option>
+  </component>
+</project>

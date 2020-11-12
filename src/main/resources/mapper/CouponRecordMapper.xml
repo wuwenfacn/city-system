@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.CouponRecordMapper">
+  <resultMap id="BaseResultMap" type="com.demo.entity.CouponRecord">
+    <!--@mbg.generated-->
+    <!--@Table coupon_record-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="claim_time" jdbcType="TIMESTAMP" property="claimTime" />
+    <result column="expired_date" jdbcType="TIMESTAMP" property="expiredDate" />
+    <result column="used_time" jdbcType="TIMESTAMP" property="usedTime" />
+    <result column="shop" jdbcType="VARCHAR" property="shop" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `uid`, claim_time, expired_date, used_time, shop, `status`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from coupon_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from coupon_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.demo.entity.CouponRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into coupon_record (`uid`, claim_time, expired_date, 
+      used_time, shop, `status`
+      )
+    values (#{uid,jdbcType=INTEGER}, #{claimTime,jdbcType=TIMESTAMP}, #{expiredDate,jdbcType=TIMESTAMP}, 
+      #{usedTime,jdbcType=TIMESTAMP}, #{shop,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.demo.entity.CouponRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into coupon_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        `uid`,
+      </if>
+      <if test="claimTime != null">
+        claim_time,
+      </if>
+      <if test="expiredDate != null">
+        expired_date,
+      </if>
+      <if test="usedTime != null">
+        used_time,
+      </if>
+      <if test="shop != null">
+        shop,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="claimTime != null">
+        #{claimTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiredDate != null">
+        #{expiredDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usedTime != null">
+        #{usedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shop != null">
+        #{shop,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.entity.CouponRecord">
+    <!--@mbg.generated-->
+    update coupon_record
+    <set>
+      <if test="uid != null">
+        `uid` = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="claimTime != null">
+        claim_time = #{claimTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiredDate != null">
+        expired_date = #{expiredDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usedTime != null">
+        used_time = #{usedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shop != null">
+        shop = #{shop,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demo.entity.CouponRecord">
+    <!--@mbg.generated-->
+    update coupon_record
+    set `uid` = #{uid,jdbcType=INTEGER},
+      claim_time = #{claimTime,jdbcType=TIMESTAMP},
+      expired_date = #{expiredDate,jdbcType=TIMESTAMP},
+      used_time = #{usedTime,jdbcType=TIMESTAMP},
+      shop = #{shop,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, uid, claim_time, expired_date, used_time, shop, status  from coupon_record
+
+    </select>
+</mapper>
