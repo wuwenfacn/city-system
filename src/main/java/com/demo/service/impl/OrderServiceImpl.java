@@ -3,7 +3,6 @@ package com.demo.service.impl;
 import com.demo.commons.exception.ServiceException;
 import com.demo.commons.requestEntity.OrderRequest;
 import com.demo.commons.result.ResultCodeEnum;
-import com.demo.commons.vo.OrderVo;
 import com.demo.entity.WOrder;
 import com.demo.mapper.WOrderMapper;
 import com.demo.service.OrderService;
@@ -13,8 +12,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.List;
 
 /**
@@ -28,7 +26,7 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
 
     @Resource
-    private WOrderMapper orderMapper;
+    private WOrderMapper wOrderMapper;
 
     /**
      * 根据产品id和订单状态 分页 查 订单详情
@@ -40,7 +38,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List getList(OrderRequest orderRequest, int page, int size) {
         PageHelper.startPage(page,size);
-        List<WOrder> wOrder = orderMapper.selectOrderByPid(orderRequest);
+        List<WOrder> wOrder = wOrderMapper.selectOrderByPid(orderRequest);
         if (wOrder==null) {
             throw new ServiceException(ResultCodeEnum.SQL_SELECT_ERROR);
         }

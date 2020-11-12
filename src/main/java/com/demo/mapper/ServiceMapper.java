@@ -19,15 +19,6 @@ public interface ServiceMapper {
     * */
     int updateServer(@Param("business") Business business);
 
-    /*
-    * 批量删除上架的服务
-    * */
-    ResponseEntity<OrderVo> delServer(java.awt.List list);
-    /*
-    * 根据id删除上架的服务
-    * */
-    ResponseEntity delSingleServer(int id);
-
    List<ReminderRecord> allCorderdetails();
    /*
    * 查询服务订单

@@ -57,10 +57,6 @@
         WHERE id=#{business.id}
     </update>
 
-    <delete id="delServer"></delete>
-
-    <delete id="delSingleServer"></delete>
-
 
     <resultMap id="allCorderdetails" type="com.demo.entity.server.ReminderRecord">
         <result property="store" column="store"/>
