@@ -9,7 +9,6 @@ import lombok.Data;
  */
 @Data
 public class SaveException extends BaseException{
-    public SaveException(Integer status, String msg, String tips) {
-        super(status, msg, tips);
-    }
+
+
 }
