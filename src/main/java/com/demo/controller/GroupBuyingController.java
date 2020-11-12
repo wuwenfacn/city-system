@@ -1,8 +1,7 @@
 package com.demo.controller;
 
-import com.demo.commons.requestEntity.CouponRequest;
 import com.demo.commons.requestEntity.GroupBuyingRequest;
-import com.demo.commons.utils.BaseResult;
+import com.demo.commons.result.BaseResult;
 import com.demo.service.GroupBuyingService;
 import org.springframework.web.bind.annotation.*;
 

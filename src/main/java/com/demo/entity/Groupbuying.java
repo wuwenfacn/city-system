@@ -1,20 +1,12 @@
 package com.demo.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import lombok.Data;
 
-/**
- * @Author qiaoshu
- * Date: 2020-11-11  19:36
- * Description:
- */
-
-/**
- * 对某商品进行团购表
- */
 @Data
-public class Groupbuying {
+public class Groupbuying implements Serializable {
     /**
      * 主键
      */
@@ -99,4 +91,7 @@ public class Groupbuying {
      * 1是未删除,0是已删除
      */
     private Integer status;
+
+    private static final long serialVersionUID = 1L;
 }
+

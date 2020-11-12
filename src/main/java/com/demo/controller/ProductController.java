@@ -1,8 +1,7 @@
 package com.demo.controller;
 
-import com.demo.commons.requestEntity.OrderRequest;
 import com.demo.commons.requestEntity.ProductRequest;
-import com.demo.commons.utils.BaseResult;
+import com.demo.commons.result.BaseResult;
 import com.demo.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 

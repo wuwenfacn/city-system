@@ -1,9 +1,7 @@
 package com.demo.controller;
 
 import com.demo.commons.requestEntity.CouponRequest;
-import com.demo.commons.utils.BaseResult;
-import com.demo.commons.utils.ResultCodeEnum;
-import com.demo.service.CouponService;
+import com.demo.commons.result.BaseResult;
 import com.demo.service.impl.CouponServiceImpl;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;

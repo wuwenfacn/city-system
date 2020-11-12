@@ -1,19 +1,14 @@
 package com.demo.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
 
-/**
- * @Author qiaoshu
- * Date: 2020-11-12  09:55
- * Description:
- */
-
-/**
- * 活动表
- */
 @Data
-public class WActivity {
+public class WActivity implements Serializable {
+    /**
+     *
+     */
     private Integer aId;
 
     /**
@@ -60,4 +55,7 @@ public class WActivity {
      * 1是未删除,0是已删除
      */
     private Integer status;
+
+    private static final long serialVersionUID = 1L;
 }
+

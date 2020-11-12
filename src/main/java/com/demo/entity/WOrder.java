@@ -1,24 +1,14 @@
 package com.demo.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
 import lombok.Data;
-import lombok.ToString;
 
-/**
- * @Author qiaoshu
- * Date: 2020-11-10  09:24
- * Description:
- */
-
-/**
- * 订单表
- */
 @Data
-@ToString
-public class WOrder {
+public class WOrder implements Serializable {
     /**
      * 主键
      */
@@ -64,5 +54,8 @@ public class WOrder {
      */
     private String oDiliver;
 
-    private List<WProduct> products;
+    private List<WProduct> wProductLis;
+
+    private static final long serialVersionUID = 1L;
 }
+

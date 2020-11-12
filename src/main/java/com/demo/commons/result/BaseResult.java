@@ -74,10 +74,13 @@ public class BaseResult<T> {
         return new BaseResult<>(codeEnum, data);
     }
 
+    public static <T> BaseResult<T> success() {
+        return new BaseResult<>();
+    }
+
     public static <T> BaseResult<T> error() {
         return new BaseResult<T>(ResultCodeEnum.ERROR);
     }
-
 
     public static <T> BaseResult<T> error(ResultCodeEnum codeEnum) {
         return error(codeEnum, null);
@@ -101,4 +104,5 @@ public class BaseResult<T> {
         baseResult.setTips(tips);
         return baseResult;
     }
+
 }
