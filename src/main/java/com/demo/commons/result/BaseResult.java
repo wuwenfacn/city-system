@@ -75,7 +75,7 @@ public class BaseResult<T> {
     }
 
     public static <T> BaseResult<T> success() {
-        return new BaseResult<>();
+        return new BaseResult<>(ResultCodeEnum.SUCCESS);
     }
 
     public static <T> BaseResult<T> error() {

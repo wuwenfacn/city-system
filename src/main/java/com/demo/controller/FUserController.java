@@ -18,7 +18,7 @@ public class FUserController {
     * 登录功能
     * */
     @GetMapping("/login")
-    public BaseResult login(@RequestBody FUserLoginVo fUserLoginVo, HttpServletRequest request){
+    public BaseResult login(FUserLoginVo fUserLoginVo, HttpServletRequest request){
         FUserLoginVo login = fUserService.login(fUserLoginVo,request);
         return BaseResult.success(login);
     }
