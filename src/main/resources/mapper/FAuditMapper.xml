@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.FAuditMapper">
+    <resultMap id="FAuditMapper" type="com.demo.entity.FAudit">
+        <id property="sId" column="s_id"/>
+        <result property="aName" column="a_name"/>
+        <result property="aBusiness" column="a_business"/>
+        <result property="aCity" column="a_city"/>
+        <result property="aSubmissionTime" column="a_submission_time"/>
+        <result property="aType" column="a_type"/>
+        <result property="aStatus" column="a_status"/>
+        <result property="aPass" column="a_pass"/>
+        <result property="aPassReason" column="a_pass_reason"/>
+    </resultMap>
+
+    <!--修改审核信息-->
+    <update id="updateFAuditById">
+        update f_audit
+        set a_name     = #{fAuditUpdateVo.aName},
+            a_reserve  = #{fAuditUpdateVo.aReserve},
+            a_serve    = #{fAuditUpdateVo.aServe},
+            a_label    = #{fAuditUpdateVo.aLabel},
+            a_business = #{fAuditUpdateVo.aBusiness},
+            a_province = #{fAuditUpdateVo.aProvince},
+            a_city     = #{fAuditUpdateVo.aCity},
+            a_district = #{fAuditUpdateVo.aDistrict},
+            a_trading  =#{fAuditUpdateVo.aTrading},
+            a_address  = #{fAuditUpdateVo.aAddress}
+        where s_id = #{fAuditUpdateVo.sId};
+    </update>
+
+    <!--门店下架审核-->
+    <update id="updatesStatusOut">
+        update f_audit a,f_shop s
+        set a.a_status      = 1,
+            a.a_pass        = #{aPass},
+            a.a_pass_reason = #{aPassReason},
+            s.s_status      = 0
+        where a.s_id = #{sId}
+          and s.s_id = #{sId}
+          and a.a_type = 5
+          and a.a_status = 2
+          and s.delete_status = 1;
+    </update>
+
+    <!--门店上架审核-->
+    <update id="updatesStatusUp">
+        update f_audit a,f_shop s
+        set a.a_status      = 1,
+            a.a_pass        = #{aPass},
+            a.a_pass_reason = #{aPassReason},
+            s.s_status      = 1
+        where a.s_id = #{sId}
+          and s.s_id = #{sId}
+          and a.a_type = 4
+          and a.a_status = 2
+          and s.delete_status = 1;
+    </update>
+
+    <!--门店删除审核-->
+    <update id="updateDeleteStatus">
+        update f_audit a,f_shop s
+        set a.a_status      = 1,
+            a.a_pass        = #{aPass},
+            a.a_pass_reason = #{aPassReason},
+            s.delete_status = 0
+        where a.s_id = #{sId}
+          and s.s_id = #{sId}
+          and a.a_type = 6
+          and a.a_status = 2
+          and s.delete_status = 1;
+    </update>
+
+    <!--根据审核状态，显示所有要审核的数据-->
+    <select id="selectFAuditList" resultMap="FAuditMapper">
+        select s_id,
+               a_name,
+               a_business,
+               a_city,
+               a_submission_time,
+               a_type,
+               a_status,
+               a_pass,
+               a_pass_reason
+        from f_audit
+        where a_status = #{aStatus};
+    </select>
+</mapper>

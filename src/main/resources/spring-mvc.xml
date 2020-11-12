@@ -16,4 +16,14 @@
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
         </mvc:message-converters>
     </mvc:annotation-driven>
+    <!--2、配置拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--要拦截的-->
+            <mvc:mapping path="/**"/>
+            <!--不拦截的-->
+            <mvc:exclude-mapping path="/fuser/login"/>
+            <bean class="com.demo.commons.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

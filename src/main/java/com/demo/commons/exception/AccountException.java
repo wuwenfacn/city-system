@@ -2,18 +2,18 @@ package com.demo.commons.exception;
 
 import com.demo.commons.result.ResultCodeEnum;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
-public class BaseException extends RuntimeException {
+public class AccountException extends BaseException {
     private int status;
     private String msg;
-    private String tips;
 
-    public BaseException(ResultCodeEnum resultCodeEnum) {
+    public AccountException(ResultCodeEnum resultCodeEnum) {
         this.status = resultCodeEnum.getRetCode();
         this.msg = resultCodeEnum.getRetMsg();
-        this.tips = resultCodeEnum.getTips();
     }
 }
