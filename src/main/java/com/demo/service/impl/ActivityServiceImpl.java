@@ -27,8 +27,10 @@ public class ActivityServiceImpl implements ActivityService {
     public boolean addActivity(ActivityRequest activityRequest) {
         WActivity wActivity = new WActivity();
         BeanUtils.copyProperties(activityRequest,wActivity);
-        int i = activityMapper.insertSelective(wActivity);
-        if (i==0){
+        int i = 0;
+        try {
+            i = activityMapper.insertSelective(wActivity);
+        }catch (RuntimeException e){
             throw new ServiceException(ResultCodeEnum.SQL_INSERT_ERROR);
         }
         return i>1;
@@ -38,8 +40,10 @@ public class ActivityServiceImpl implements ActivityService {
     public boolean updateActivity(ActivityRequest activityRequest) {
         WActivity wActivity = new WActivity();
         BeanUtils.copyProperties(activityRequest,wActivity);
-        int i = activityMapper.updateByPrimaryKey(wActivity);
-        if (i==0){
+        int i = 0;
+        try {
+            i = activityMapper.updateByPrimaryKey(wActivity);
+        }catch (RuntimeException e){
             throw new ServiceException(ResultCodeEnum.SQL_UPDATE_ERROR);
         }
         return i>1;
@@ -47,8 +51,10 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public boolean deleteActivity(Integer actid) {
-        int i = activityMapper.deleteByPrimaryKey(actid);
-        if (i==0){
+        int i = 0;
+        try {
+            i = activityMapper.deleteByPrimaryKey(actid);
+        }catch (RuntimeException e){
             throw new ServiceException(ResultCodeEnum.SQL_DELETE_ERROR);
         }
         return i>0;

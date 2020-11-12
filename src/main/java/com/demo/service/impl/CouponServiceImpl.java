@@ -38,9 +38,11 @@ public class CouponServiceImpl implements CouponService {
     public boolean addCoupon(CouponRequest couponRequest) {
         WCoupon wCoupon = new WCoupon();
         BeanUtils.copyProperties(couponRequest,wCoupon);
-        int i = couponMapper.insertSelective(wCoupon);
-        if (i==0){
-            throw new ServiceException(ResultCodeEnum.SQL_INSERT_ERROR);
+        int i = 0;
+        try {
+           i = couponMapper.insertSelective(wCoupon);
+        }catch (RuntimeException e){
+           throw new ServiceException(ResultCodeEnum.SQL_INSERT_ERROR);
         }
         return i>0;
     }
@@ -52,8 +54,10 @@ public class CouponServiceImpl implements CouponService {
      */
     @Override
     public boolean deleteCoupon(Integer couponId) {
-        int i = couponMapper.deleteByPrimaryKey(couponId);
-        if (i==0){
+        int i = 0;
+        try {
+            i = couponMapper.deleteByPrimaryKey(couponId);
+        }catch (RuntimeException e){
             throw new ServiceException(ResultCodeEnum.SQL_DELETE_ERROR);
         }
         return i>0;
@@ -68,8 +72,10 @@ public class CouponServiceImpl implements CouponService {
     public boolean updateCoupon(CouponRequest couponRequest) {
         WCoupon wCoupon = new WCoupon();
         BeanUtils.copyProperties(couponRequest,wCoupon);
-        int i = couponMapper.updateByPrimaryKeySelective(wCoupon);
-        if (i==0){
+        int i = 0;
+        try {
+            i = couponMapper.updateByPrimaryKeySelective(wCoupon);
+        }catch (RuntimeException e){
             throw new ServiceException(ResultCodeEnum.SQL_UPDATE_ERROR);
         }
         return i>0;

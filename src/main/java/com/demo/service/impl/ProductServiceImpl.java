@@ -33,8 +33,10 @@ public class ProductServiceImpl implements ProductService {
     public boolean addProducts(ProductRequest productRequest) {
         WProduct wProduct = new WProduct();
         BeanUtils.copyProperties(productRequest,wProduct);
-        int i = productMapper.insertSelective(wProduct);
-        if (i==0){
+        int i = 0;
+        try{
+            i = productMapper.insertSelective(wProduct);
+        }catch (RuntimeException exception){
             throw new ServiceException(ResultCodeEnum.SQL_INSERT_ERROR);
         }
         return i>0;
@@ -49,12 +51,13 @@ public class ProductServiceImpl implements ProductService {
     public boolean updateProduct(ProductRequest productRequest) {
         WProduct wProduct = new WProduct();
         BeanUtils.copyProperties(productRequest,wProduct);
-        int i = productMapper.updateByPrimaryKeySelective(wProduct);
-        if (i==0){
+        int i = 0;
+        try{
+            i = productMapper.updateByPrimaryKeySelective(wProduct);
+        }catch (RuntimeException exception){
             throw new ServiceException(ResultCodeEnum.SQL_UPDATE_ERROR);
         }
         return i>0;
-
     }
 
     /**
@@ -64,8 +67,10 @@ public class ProductServiceImpl implements ProductService {
      */
     @Override
     public boolean deleteProduct(Integer productId) {
-        int i = productMapper.deleteByPrimaryKey(productId);
-        if (i==0){
+        int i = 0;
+        try{
+            i = productMapper.deleteByPrimaryKey(productId);
+        }catch (RuntimeException exception){
             throw new ServiceException(ResultCodeEnum.SQL_DELETE_ERROR);
         }
         return i>0;
