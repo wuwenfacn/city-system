@@ -3,6 +3,7 @@ package com.demo.controller;
 import com.demo.commons.requestEntity.ActivityRequest;
 import com.demo.commons.result.BaseResult;
 import com.demo.service.impl.ActivityServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,6 +20,7 @@ import java.util.List;
 public class ActivityController {
     @Resource
     ActivityServiceImpl activityService;
+
 
     /**
      * 添加活动

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.ServiceMapper">
+    <resultMap id="bussinessMap" type="com.demo.entity.server.Business">
+        <result property="id" column="id"/>
+        <result property="businessType" column="business_type"/>
+        <result property="businessClassification" column="business_classification"/>
+        <result property="store" column="store"/>
+        <result property="title" column="title"/>
+        <result property="picture" column="picture"/>
+        <result property="label" column="label"/>
+        <result property="uptime" column="uptime"/>
+        <result property="down" column="down"/>
+        <result property="setprice" column="setprice"/>
+        <result property="price" column="price"/>
+        <result property="soldRice" column="sold_rice"/>
+        <result property="settlement" column="settlement"/>
+        <result property="deposit" column="deposit"/>
+        <result property="pcDis" column="pc_dis"/>
+        <result property="phoneDis" column="phone_dis"/>
+        <result property="num" column="num"/>
+    </resultMap>
+    <resultMap id="bussinessMapVo" type="com.demo.commons.vo.BusinessVo">
+        <result property="id" column="id"/>
+        <result property="businessType" column="business_type"/>
+        <result property="label" column="label"/>
+        <result property="uptime" column="uptime"/>
+        <result property="price" column="price"/>
+        <result property="num" column="num"/>
+    </resultMap>
+
+    <select id="allServer" resultMap="bussinessMapVo">
+        SELECT b.id,b.label,b.uptime,b.price,b.business_type,b.num
+        FROM business b
+    </select>
+
+<!--编辑服务-->
+    <update id="updateServer">
+        UPDATE business SET
+            business_type=#{business.businessType},
+            business_classification=#{business.businessClassification},
+            store=#{business.store},
+            title=#{business.title},
+            picture=#{business.picture},
+            label=#{business.label},
+            uptime=#{business.uptime},
+            down=#{business.down},
+            setprice=#{business.setprice},
+            price=#{business.price},
+            sold_rice=#{business.soldRice},
+            settlement=#{business.settlement},
+            Deposit=#{business.deposit},
+            pc_dis=#{business.pcDis},
+            phone_dis=#{business.phoneDis}
+        WHERE id=#{business.id}
+    </update>
+
+    <delete id="delServer"></delete>
+
+    <delete id="delSingleServer"></delete>
+
+
+    <resultMap id="allCorderdetails" type="com.demo.entity.server.ReminderRecord">
+        <result property="store" column="store"/>
+        <result property="orderNumber" column="order_number"/>
+        <result property="contacts" column="contacts"/>
+        <result property="telephone" column="telephone"/>
+        <result property="location" column="location"/>
+        <result property="reminderRecordTime" column="ReminderRecord_time"/>
+    </resultMap>
+    <!--查询所有催帐单-->
+    <select id="allCorderdetails" resultMap="allCorderdetails">
+        SELECT r.store, r.order_number, r.contacts, r.telephone, r.location, r.ReminderRecord_time
+        FROM reminder_record r;
+    </select>
+    <resultMap id="allServerOrder" type="com.demo.entity.server.ServerOrder">
+        <result property="orderNumber" column="order_number"/>
+        <result property="username" column="username"/>
+        <result property="project" column="project"/>
+        <result property="location" column="location"/>
+        <result property="store" column="store"/>
+        <result property="telephone" column="telephone"/>
+        <result property="scheduledTime" column="Scheduled_time"/>
+        <result property="actualTime" column="Actual_time"/>
+        <result property="payTime" column="pay_time"/>
+        <result property="countmoney" column="countmoney"/>
+        <result property="status" column="status"/>
+
+    </resultMap>
+    <select id="allServerOrder" resultMap="allServerOrder">
+        SELECT order_number, username, project, location, store, telephone, Scheduled_time, Actual_time, pay_time, countmoney, status
+        FROM server_order
+    </select>
+
+    <insert id="insertFullReduction">
+        INSERT INTO full_reduction(status, valve)
+        VALUES (#{fullReduction.status},#{fullReduction.valve})
+    </insert>
+    <resultMap id="getallPreSale" type="com.demo.entity.server.PreSale">
+        <result column="shop_id" property="shopId"/>
+        <result column="shop_name" property="shopName"/>
+        <result column="begin_time" property="beginTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="sale_num" property="saleNum"/>
+        <result column="sort" property="sort"/>
+        <result column="status" property="status"/>
+    </resultMap>
+    <select id="getallPreSale" resultMap="getallPreSale">
+        SELECT shop_id, shop_name, begin_time, end_time, sale_num, sort, status
+        FROM pre_sale
+    </select>
+    <resultMap id="shop" type="com.demo.entity.Shop">
+        <id property="id" column="id"/>
+        <result property="shopName" column="shop_name"/>
+        <result property="price" column="price"/>
+        <result property="pack" column="pack"/>
+        <result property="distribution" column="distribution"/>
+    </resultMap>
+    <!--查询所有商品-->
+    <select id="allShop" resultMap="shop">
+        SELECT id, shop_name, price, pack, distribution
+        FROM shop
+    </select>
+
+    <insert id="addShop">
+    INSERT INTO pre_sale(shop_id, shop_name, begin_time, end_time, sale_num, sort, status)
+    VALUES (#{preSale.shopId},#{preSale.shopName},#{preSale.beginTime},#{preSale.endTime},#{preSale.saleNum},#{preSale.sort},#{preSale.status})
+    </insert>
+</mapper>

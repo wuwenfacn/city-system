@@ -20,7 +20,7 @@
     <!--添加分类-->
     <insert id="insertFTakeoutType">
         insert into f_takeout_type(t_name, t_sort, t_state)
-        values (#{shopTakeoutType.tName}, #{shopTakeoutType.tSort}, #{shopTakeoutType.tState});
+        values (#{fTakeoutType.tName}, #{fTakeoutType.tSort}, #{fTakeoutType.tState});
     </insert>
 
     <!--修改分类-->

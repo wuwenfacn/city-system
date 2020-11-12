@@ -4,6 +4,7 @@ import com.demo.commons.requestEntity.CouponRequest;
 import com.demo.commons.result.BaseResult;
 import com.demo.service.impl.CouponServiceImpl;
 import com.github.pagehelper.PageInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

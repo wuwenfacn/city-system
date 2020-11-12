@@ -16,5 +16,5 @@
     <!--<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"/>-->
     <!--3、开启事务注解的支持-->
     <!--名字如果是transactionManager可以不写-->
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <!--<tx:annotation-driven transaction-manager="transactionManager"/>-->
 </beans>

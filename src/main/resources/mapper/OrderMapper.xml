@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.OrderMapper">
+    <resultMap id="orderResultMap" type="com.demo.entity.Corder">
+       <id property="orderNumber" column="order_number"/>
+        <result property="transactionData" column="transaction_data"/>
+        <result property="username" column="username"/>
+        <result property="amount" column="amount"/>
+        <result property="status" column="status"/>
+        <result property="id" column="id"/>
+    </resultMap>
+    <resultMap id="detailedMap" type="com.demo.entity.Corderdetails" extends="addressMap">
+        <result property="orderTime" column="order_time"/>
+        <result property="username" column="username"/>
+        <result property="store" column="store"/>
+        <result property="distributionMode" column="distribution_mode"/>
+        <result property="deliveryTime" column="delivery_time"/>
+        <result property="shopName" column="shop_name"/>
+        <result property="num" column="num"/>
+    </resultMap>
+    <resultMap id="addressMap" type="com.demo.entity.Address">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="location" column="location"/>
+        <result property="telephone" column="telephone"/>
+    </resultMap>
+    <resultMap id="ticketMap" type="com.demo.commons.vo.TicketVo">
+        <result property="orderNumber" column="order_number"/>
+        <result property="transactionData" column="transaction_data"/>
+        <result property="shopName" column="shop_name"/>
+        <result property="username" column="username"/>
+        <result property="status" column="status"/>
+        <result property="num" column="num"/>
+        <result property="telephone" column="telephone"/>
+        <result property="location" column="location"/>
+        <result property="price" column="price"/>
+        <result property="distribution" column="distribution"/>
+        <result property="countMoney" column="countmoney"/>
+    </resultMap>
+    <!--查询所有订单-->
+    <select id="selectAllOrder" resultMap="orderResultMap">
+        SELECT order_number,transaction_data,username,amount,status,id
+        FROM c_order;
+    </select>
+    <!--根据订单编号 查询订单详情-->
+    <select id="selectOrderDetails" resultMap="detailedMap">
+        SELECT order_time,username,store,distribution_mode,delivery_time,shop_name,num
+        FROM c_orderdetails
+        WHERE order_number=#{orderNumber}
+    </select>
+
+    <!--根据订单号生成小票-->
+    <select id="getTicket" resultMap="ticketMap" >
+        SELECT c.order_number,c.transaction_data,c.username,s.price*o.num price ,c.status,
+               o.shop_name, o.num,
+               a.telephone,a.location,
+               s.price,s.distribution,
+               s.price*o.num+s.distribution countmoney
+        FROM c_order c , c_orderdetails o,address a , shop s
+        WHERE c.order_number=#{orderNumber} AND o.order_number=#{orderNumber}
+    </select>
+    <select id="bill" resultMap="ticketMap"  >
+        SELECT o.store,o.order_number,price,price*num
+        FROM c_order c , c_orderdetails o,address a , shop s
+    </select>
+</mapper>
