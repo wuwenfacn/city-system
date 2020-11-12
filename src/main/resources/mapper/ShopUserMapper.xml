@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.ShopUserMapper">
+    <resultMap id="FUserMapper" type="com.demo.entity.ShopUser">
+        <result property="username" column="u_username"/>
+        <result property="password" column="u_password"/>
+    </resultMap>
+
+    <!--登录功能，根据用户输入的账号和密码，传递到数据库中进行查找-->
+    <select id="login" resultMap="FUserMapper">
+        select u_username, u_password
+        from f_user
+        where u_username = #{shopUserLoginVo.username}
+        and u_password = #{shopUserLoginVo.password}
+        and delete_status = 1;
+    </select>
+
+    <!--注册功能-->
+    <insert id="register">
+        insert into f_user
+        (u_username, u_password, shop_name, business_license, other_certification, brand, shop_img,
+        shop_type, province, city, district, trading_area, address, phone, contact_name, business_time)
+        values (#{shopUserRegisterVo.username}, #{shopUserRegisterVo.password}, #{shopUserRegisterVo.shopName},
+        #{shopUserRegisterVo.businessLicense}, #{shopUserRegisterVo.otherCertification}, #{shopUserRegisterVo.brand},
+        #{shopUserRegisterVo.shopImg}, #{shopUserRegisterVo.shopType}, #{shopUserRegisterVo.province},
+        #{shopUserRegisterVo.city}, #{shopUserRegisterVo.district}, #{shopUserRegisterVo.tradingArea},
+        #{shopUserRegisterVo.address}, #{shopUserRegisterVo.phone}, #{shopUserRegisterVo.contactName},
+        #{shopUserRegisterVo.businessTime});
+    </insert>
+
+    <!--修改密码功能-->
+    <update id="alterPassword">
+        update f_user
+        set u_password = #{shopUserAlterPasswordVo.password}
+        where u_id = #{shopUserAlterPasswordVo.uId}
+        and delete_status = 1;
+    </update>
+
+    <!--修改个人信息功能-->
+    <update id="alterUser">
+        update f_user
+        set u_username = #{shopUserAlterUserVo.username},
+        shop_name = #{param1.shopName},
+        business_license = #{param1.businessLicense},
+        other_certification = #{param1.otherCertification},
+        brand = #{param1.brand},
+        shop_img = #{param1.shopImg},
+        shop_type = #{param1.shopType},
+        province = #{param1.province},
+        city = #{shopUserAlterUserVo.city},
+        district = #{param1.district},
+        trading_area = #{param1.tradingArea},
+        address = #{param1.address},
+        phone = #{shopUserAlterUserVo.phone},
+        contact_name = #{shopUserAlterUserVo.contactName},
+        business_time = #{shopUserAlterUserVo.businessTime}
+        where u_id = #{shopUserAlterUserVo.uId}
+        and delete_status = 1;
+    </update>
+
+    <!--判断用户名是否存在-->
+    <select id="checkUserByName" resultMap="FUserMapper">
+        select u_username
+        from f_user
+        where u_username = #{username}
+        and delete_status = 1;
+    </select>
+
+    <!--判断id是否存在-->
+    <select id="checkUserByuId" resultMap="FUserMapper">
+        select u_id
+        from f_user
+        where u_id = #{uId}
+        and delete_status = 1;
+    </select>
+
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.ShopTakeoutTypeMapper">
+    <resultMap id="FTakeoutTypeMapper" type="com.demo.entity.ShopTakeoutType">
+        <id property="tId" column="t_id"/>
+        <result property="tName" column="t_name"/>
+        <result property="tSort" column="t_sort"/>
+        <result property="tState" column="t_state"/>
+    </resultMap>
+
+    <!--查看所有分类信息-->
+    <select id="selectFTakeoutTypeList" resultMap="FTakeoutTypeMapper">
+        select t_id, t_name, t_sort, t_state
+        from f_takeout_type
+        where delete_status = 1;
+    </select>
+
+    <!--添加分类-->
+    <insert id="insertFTakeoutType">
+        insert into f_takeout_type(t_name, t_sort, t_state)
+        values (#{shopTakeoutType.tName}, #{shopTakeoutType.tSort}, #{shopTakeoutType.tState});
+    </insert>
+
+    <!--修改分类-->
+    <update id="updateFTakeoutTypeById">
+        update f_takeout_type
+        set t_name = #{shopTakeoutType.tName},
+        t_sort = #{shopTakeoutType.tSort},
+        t_state = #{shopTakeoutType.tState}
+        where t_id = #{shopTakeoutType.tId}
+        and delete_status = 1;
+    </update>
+
+    <!--删除分类-->
+    <update id="deleteFTakeoutTypeById">
+        update f_takeout_type
+        set delete_status = 0
+        where t_id = #{tId}
+          and delete_status = 1;
+    </update>
+</mapper>
