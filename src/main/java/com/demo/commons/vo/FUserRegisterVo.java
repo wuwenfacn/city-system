@@ -5,8 +5,6 @@ import lombok.Data;
 @Data
 public class FUserRegisterVo {
 
-    /*private Integer uId;*/
-
     private String uUsername;
 
     private String uPassword;
@@ -38,8 +36,6 @@ public class FUserRegisterVo {
     private String contactName;
 
     private String businessTime;
-
-    /*private Integer deleteStatus;*/
 
 }
 

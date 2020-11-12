@@ -9,6 +9,7 @@ import com.demo.service.FUserAdminService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -20,6 +21,9 @@ public class FUserAdminServiceImpl implements FUserAdminService {
     @Resource
     FUserMapper fUserMapper;
 
+    /*
+     * 展示所有用户信息
+     * */
     @Override
     public List<FUser> selectFUserList() {
         List<FUser> fUsers = fUserAdminMapper.selectFUserList();
@@ -29,7 +33,11 @@ public class FUserAdminServiceImpl implements FUserAdminService {
         return fUsers;
     }
 
+    /*
+     * 删除用户
+     * */
     @Override
+    @Transactional
     public int deleteUser(int uId) {
         if(fUserMapper.checkUserByuId(uId) == null){
             throw new ServiceException(ResultCodeEnum.ACCOUNT_NOT_EXIST);

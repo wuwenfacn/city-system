@@ -670,99 +670,102 @@
     <table id="208" parent="2" name="f_audit">
       <Comment>审核表</Comment>
     </table>
-    <table id="209" parent="2" name="f_merchant_type">
+    <table id="209" parent="2" name="f_comment">
+      <Comment>评论表</Comment>
+    </table>
+    <table id="210" parent="2" name="f_merchant_type">
       <Comment>商家分类表</Comment>
     </table>
-    <table id="210" parent="2" name="f_shop">
+    <table id="211" parent="2" name="f_shop">
       <Comment>门店信息表</Comment>
     </table>
-    <table id="211" parent="2" name="f_takeout_appointment">
+    <table id="212" parent="2" name="f_takeout_appointment">
       <Comment>外卖预约表</Comment>
     </table>
-    <table id="212" parent="2" name="f_takeout_commodity">
+    <table id="213" parent="2" name="f_takeout_commodity">
       <Comment>外卖商品表</Comment>
     </table>
-    <table id="213" parent="2" name="f_takeout_type">
+    <table id="214" parent="2" name="f_takeout_type">
       <Comment>外卖分类表</Comment>
     </table>
-    <table id="214" parent="2" name="f_user">
+    <table id="215" parent="2" name="f_user">
       <Comment>用户表</Comment>
     </table>
-    <column id="215" parent="208" name="a_id">
+    <column id="216" parent="208" name="a_id">
       <Position>1</Position>
       <Comment>审核主键id</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="216" parent="208" name="s_id">
+    <column id="217" parent="208" name="s_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="217" parent="208" name="a_name">
+    <column id="218" parent="208" name="a_name">
       <Position>3</Position>
       <Comment>门店名称</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="218" parent="208" name="a_reserve">
+    <column id="219" parent="208" name="a_reserve">
       <Position>4</Position>
       <Comment>外卖或预定，1表示外卖，0表示预定</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
     </column>
-    <column id="219" parent="208" name="a_serve">
+    <column id="220" parent="208" name="a_serve">
       <Position>5</Position>
       <Comment>是否开启上门服务，1表示开启，0表示不开启</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
     </column>
-    <column id="220" parent="208" name="a_label">
+    <column id="221" parent="208" name="a_label">
       <Position>6</Position>
       <Comment>门店标签</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="221" parent="208" name="a_business">
+    <column id="222" parent="208" name="a_business">
       <Position>7</Position>
       <Comment>行业分类</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="222" parent="208" name="a_province">
+    <column id="223" parent="208" name="a_province">
       <Position>8</Position>
       <Comment>所在省份</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="223" parent="208" name="a_city">
+    <column id="224" parent="208" name="a_city">
       <Position>9</Position>
       <Comment>所在城市</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="224" parent="208" name="a_district">
+    <column id="225" parent="208" name="a_district">
       <Position>10</Position>
       <Comment>所在区域</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="225" parent="208" name="a_trading">
+    <column id="226" parent="208" name="a_trading">
       <Position>11</Position>
       <Comment>商圈</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="226" parent="208" name="a_address">
+    <column id="227" parent="208" name="a_address">
       <Position>12</Position>
       <Comment>详细地址</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="227" parent="208" name="a_submission_time">
+    <column id="228" parent="208" name="a_submission_time">
       <Position>13</Position>
       <Comment>提交时间</Comment>
       <DataType>timestamp|0s</DataType>
@@ -770,486 +773,540 @@
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
     </column>
-    <column id="228" parent="208" name="a_type">
+    <column id="229" parent="208" name="a_type">
       <Position>14</Position>
       <Comment>审核类型，1表示发布申请，2表示修改审核申请，3表示资料更新申请，4表示上架申请，5表示下架申请</Comment>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="229" parent="208" name="a_status">
+    <column id="230" parent="208" name="a_status">
       <Position>15</Position>
       <Comment>审核状态，0表示取消，1表示已审核，2表示未审核</Comment>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>2</DefaultExpression>
     </column>
-    <column id="230" parent="208" name="a_pass">
+    <column id="231" parent="208" name="a_pass">
       <Position>16</Position>
       <Comment>是否通过，0表示未通过，1表示已通过</Comment>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="231" parent="208" name="a_pass_reason">
+    <column id="232" parent="208" name="a_pass_reason">
       <Position>17</Position>
       <Comment>是否通过的理由</Comment>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <key id="232" parent="208" name="PRIMARY">
+    <key id="233" parent="208" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>a_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="233" parent="209" name="m_id">
+    <column id="234" parent="209" name="comment_id">
+      <Position>1</Position>
+      <Comment>评论表id</Comment>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="235" parent="209" name="c_id">
+      <Position>2</Position>
+      <Comment>商品表的外键</Comment>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <column id="236" parent="209" name="u_id">
+      <Position>3</Position>
+      <Comment>用户表的外键</Comment>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <column id="237" parent="209" name="comment_star">
+      <Position>4</Position>
+      <Comment>评论星级</Comment>
+      <DataType>int(11)|0s</DataType>
+      <DefaultExpression>5</DefaultExpression>
+    </column>
+    <column id="238" parent="209" name="comment_content">
+      <Position>5</Position>
+      <Comment>评论内容</Comment>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <column id="239" parent="209" name="comment_image">
+      <Position>6</Position>
+      <Comment>评论图片</Comment>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <column id="240" parent="209" name="comment_reply">
+      <Position>7</Position>
+      <Comment>商家回复</Comment>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <column id="241" parent="209" name="comment_create_time">
+      <Position>8</Position>
+      <Comment>评论时间</Comment>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="242" parent="209" name="delete_status">
+      <Position>9</Position>
+      <Comment>是否删除，1表示正常，0表示已删除</Comment>
+      <DataType>int(11)|0s</DataType>
+      <DefaultExpression>1</DefaultExpression>
+    </column>
+    <key id="243" parent="209" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>comment_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="244" parent="210" name="m_id">
       <Position>1</Position>
       <Comment>商家分类表主键id</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="234" parent="209" name="m_type">
+    <column id="245" parent="210" name="m_type">
       <Position>2</Position>
       <Comment>外卖商家分类</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="235" parent="209" name="m_office_time">
+    <column id="246" parent="210" name="m_office_time">
       <Position>3</Position>
       <Comment>开始营业时间</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="236" parent="209" name="m_closing_time">
+    <column id="247" parent="210" name="m_closing_time">
       <Position>4</Position>
       <Comment>结束营业时间</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="237" parent="209" name="m_mode">
+    <column id="248" parent="210" name="m_mode">
       <Position>5</Position>
       <Comment>外卖配送方式</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="238" parent="209" name="m_shipping_information">
+    <column id="249" parent="210" name="m_shipping_information">
       <Position>6</Position>
       <Comment>外卖配送信息</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="239" parent="209" name="m_notice">
+    <column id="250" parent="210" name="m_notice">
       <Position>7</Position>
       <Comment>商家公告</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="240" parent="209" name="delete_status">
+    <column id="251" parent="210" name="delete_status">
       <Position>8</Position>
       <Comment>是否删除，1表示正常，0表示已删除</Comment>
       <DataType>int(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
     </column>
-    <key id="241" parent="209" name="PRIMARY">
+    <key id="252" parent="210" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>m_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="242" parent="210" name="s_id">
+    <column id="253" parent="211" name="s_id">
       <Position>1</Position>
       <Comment>门店编号</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="243" parent="210" name="s_name">
+    <column id="254" parent="211" name="s_name">
       <Position>2</Position>
       <Comment>门店名称</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="244" parent="210" name="s_reserve">
+    <column id="255" parent="211" name="s_reserve">
       <Position>3</Position>
       <Comment>外卖或预定，1表示外卖，0表示预定</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
     </column>
-    <column id="245" parent="210" name="s_serve">
+    <column id="256" parent="211" name="s_serve">
       <Position>4</Position>
       <Comment>是否开启上门服务，1表示开启，0表示不开启</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
     </column>
-    <column id="246" parent="210" name="s_label">
+    <column id="257" parent="211" name="s_label">
       <Position>5</Position>
       <Comment>门店标签</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="247" parent="210" name="s_logo">
+    <column id="258" parent="211" name="s_logo">
       <Position>6</Position>
       <Comment>供应商标志图片</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="248" parent="210" name="s_back_img">
+    <column id="259" parent="211" name="s_back_img">
       <Position>7</Position>
       <Comment>门店背景图片</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="249" parent="210" name="s_product_img">
+    <column id="260" parent="211" name="s_product_img">
       <Position>8</Position>
       <Comment>门店产品图库</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="250" parent="210" name="s_environment_img">
+    <column id="261" parent="211" name="s_environment_img">
       <Position>9</Position>
       <Comment>门店环境图库</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="251" parent="210" name="s_else_img">
+    <column id="262" parent="211" name="s_else_img">
       <Position>10</Position>
       <Comment>门店其他图库</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="252" parent="210" name="s_business">
+    <column id="263" parent="211" name="s_business">
       <Position>11</Position>
       <Comment>行业分类</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="253" parent="210" name="s_province">
+    <column id="264" parent="211" name="s_province">
       <Position>12</Position>
       <Comment>所在省份</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="254" parent="210" name="s_city">
+    <column id="265" parent="211" name="s_city">
       <Position>13</Position>
       <Comment>所在城市</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="255" parent="210" name="s_district">
+    <column id="266" parent="211" name="s_district">
       <Position>14</Position>
       <Comment>所在区域</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="256" parent="210" name="s_trading">
+    <column id="267" parent="211" name="s_trading">
       <Position>15</Position>
       <Comment>商圈</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="257" parent="210" name="s_address">
+    <column id="268" parent="211" name="s_address">
       <Position>16</Position>
       <Comment>详细地址</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="258" parent="210" name="s_path">
+    <column id="269" parent="211" name="s_path">
       <Position>17</Position>
       <Comment>交通路线</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="259" parent="210" name="s_linkman">
+    <column id="270" parent="211" name="s_linkman">
       <Position>18</Position>
       <Comment>联系人</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="260" parent="210" name="s_phone">
+    <column id="271" parent="211" name="s_phone">
       <Position>19</Position>
       <Comment>联系电话</Comment>
       <DataType>varchar(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="261" parent="210" name="s_business_hours">
+    <column id="272" parent="211" name="s_business_hours">
       <Position>20</Position>
       <Comment>营业时间</Comment>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="262" parent="210" name="s_brief">
+    <column id="273" parent="211" name="s_brief">
       <Position>21</Position>
       <Comment>门店简介</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="263" parent="210" name="s_status">
+    <column id="274" parent="211" name="s_status">
       <Position>22</Position>
       <Comment>下架状态，1表示上线，0表示下线</Comment>
       <DataType>int(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
     </column>
-    <column id="264" parent="210" name="delete_status">
+    <column id="275" parent="211" name="delete_status">
       <Position>23</Position>
       <Comment>删除状态，1表示未删除，0表示已删除</Comment>
       <DataType>int(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
     </column>
-    <key id="265" parent="210" name="PRIMARY">
+    <key id="276" parent="211" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>s_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="266" parent="211" name="a_id">
+    <column id="277" parent="212" name="a_id">
       <Position>1</Position>
       <Comment>外卖预约表主键id</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="267" parent="211" name="a_name">
+    <column id="278" parent="212" name="a_name">
       <Position>2</Position>
       <Comment>预约的名称</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="268" parent="211" name="a_price">
+    <column id="279" parent="212" name="a_price">
       <Position>3</Position>
       <Comment>定金</Comment>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="269" parent="211" name="a_time">
+    <column id="280" parent="212" name="a_time">
       <Position>4</Position>
       <Comment>预约的时间</Comment>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="270" parent="211" name="a_number">
+    <column id="281" parent="212" name="a_number">
       <Position>5</Position>
       <Comment>预约的数量</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="271" parent="211" name="a_remark">
+    <column id="282" parent="212" name="a_remark">
       <Position>6</Position>
       <Comment>备注</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="272" parent="211" name="delete_status">
+    <column id="283" parent="212" name="delete_status">
       <Position>7</Position>
       <Comment>是否删除，1表示正常，0表示已删除</Comment>
       <DataType>int(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
     </column>
-    <key id="273" parent="211" name="PRIMARY">
+    <key id="284" parent="212" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>a_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="274" parent="212" name="c_id">
+    <column id="285" parent="213" name="c_id">
       <Position>1</Position>
       <Comment>外卖商品表主键id</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="275" parent="212" name="c_name">
+    <column id="286" parent="213" name="c_name">
       <Position>2</Position>
       <Comment>外卖商品名称</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="276" parent="212" name="c_type">
+    <column id="287" parent="213" name="c_type">
       <Position>3</Position>
       <Comment>菜单分类</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="277" parent="212" name="c_img">
+    <column id="288" parent="213" name="c_img">
       <Position>4</Position>
       <Comment>商品图片</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="278" parent="212" name="c_price">
+    <column id="289" parent="213" name="c_price">
       <Position>5</Position>
       <Comment>价格</Comment>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="279" parent="212" name="delete_status">
+    <column id="290" parent="213" name="delete_status">
       <Position>6</Position>
       <Comment>是否删除，1表示正常，0表示已删除</Comment>
       <DataType>int(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
     </column>
-    <key id="280" parent="212" name="PRIMARY">
+    <key id="291" parent="213" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>c_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="281" parent="213" name="t_id">
+    <column id="292" parent="214" name="t_id">
       <Position>1</Position>
       <Comment>外卖分类表主键id</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="282" parent="213" name="t_name">
+    <column id="293" parent="214" name="t_name">
       <Position>2</Position>
       <Comment>分类名称</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="283" parent="213" name="t_sort">
+    <column id="294" parent="214" name="t_sort">
       <Position>3</Position>
       <Comment>排序，默认为10，1最大</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>10</DefaultExpression>
     </column>
-    <column id="284" parent="213" name="t_state">
+    <column id="295" parent="214" name="t_state">
       <Position>4</Position>
       <Comment>状态，1表示可用，0表示不可用</Comment>
       <DataType>int(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
     </column>
-    <column id="285" parent="213" name="delete_status">
+    <column id="296" parent="214" name="delete_status">
       <Position>5</Position>
       <Comment>是否删除，1表示正常，0表示已删除</Comment>
       <DataType>int(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
     </column>
-    <index id="286" parent="213" name="t_name">
+    <index id="297" parent="214" name="t_name">
       <ColNames>t_name</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="287" parent="213" name="PRIMARY">
+    <key id="298" parent="214" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>t_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="288" parent="213" name="t_name">
+    <key id="299" parent="214" name="t_name">
       <ColNames>t_name</ColNames>
       <UnderlyingIndexName>t_name</UnderlyingIndexName>
     </key>
-    <column id="289" parent="214" name="u_id">
+    <column id="300" parent="215" name="u_id">
       <Position>1</Position>
       <Comment>用户表主键id</Comment>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="290" parent="214" name="u_username">
+    <column id="301" parent="215" name="u_username">
       <Position>2</Position>
       <Comment>账号</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="291" parent="214" name="u_password">
+    <column id="302" parent="215" name="u_password">
       <Position>3</Position>
       <Comment>密码</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="292" parent="214" name="shop_name">
+    <column id="303" parent="215" name="shop_name">
       <Position>4</Position>
       <Comment>门店名称</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="293" parent="214" name="business_license">
+    <column id="304" parent="215" name="business_license">
       <Position>5</Position>
       <Comment>营业执照</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="294" parent="214" name="other_certification">
+    <column id="305" parent="215" name="other_certification">
       <Position>6</Position>
       <Comment>其它资质</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="295" parent="214" name="brand">
+    <column id="306" parent="215" name="brand">
       <Position>7</Position>
       <Comment>商户商标</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="296" parent="214" name="shop_img">
+    <column id="307" parent="215" name="shop_img">
       <Position>8</Position>
       <Comment>门店图片</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="297" parent="214" name="shop_type">
+    <column id="308" parent="215" name="shop_type">
       <Position>9</Position>
       <Comment>门店分类</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="298" parent="214" name="province">
+    <column id="309" parent="215" name="province">
       <Position>10</Position>
       <Comment>省</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="299" parent="214" name="city">
+    <column id="310" parent="215" name="city">
       <Position>11</Position>
       <Comment>市</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="300" parent="214" name="district">
+    <column id="311" parent="215" name="district">
       <Position>12</Position>
       <Comment>区</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="301" parent="214" name="trading_area">
+    <column id="312" parent="215" name="trading_area">
       <Position>13</Position>
       <Comment>商圈</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="302" parent="214" name="address">
+    <column id="313" parent="215" name="address">
       <Position>14</Position>
       <Comment>详细地址</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="303" parent="214" name="phone">
+    <column id="314" parent="215" name="phone">
       <Position>15</Position>
       <Comment>联系电话</Comment>
       <DataType>varchar(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="304" parent="214" name="contact_name">
+    <column id="315" parent="215" name="contact_name">
       <Position>16</Position>
       <Comment>真实的名字</Comment>
       <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="305" parent="214" name="business_time">
+    <column id="316" parent="215" name="business_time">
       <Position>17</Position>
       <Comment>营业时间</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="306" parent="214" name="delete_status">
+    <column id="317" parent="215" name="delete_status">
       <Position>18</Position>
       <Comment>是否删除，1表示正常，0表示删除</Comment>
       <DataType>int(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
     </column>
-    <key id="307" parent="214" name="PRIMARY">
+    <key id="318" parent="215" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>u_id</ColNames>
       <Primary>1</Primary>

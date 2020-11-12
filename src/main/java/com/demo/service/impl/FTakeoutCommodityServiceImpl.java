@@ -17,8 +17,10 @@ public class FTakeoutCommodityServiceImpl implements FTakeoutCommodityService {
     @Resource
     FTakeoutCommodityMapper fTakeoutCommodityMapper;
 
+    /*
+     * 显示所有的外卖商品信息
+     * */
     @Override
-    @Transactional
     public List<FTakeoutCommodity> selectFTakeoutCommodityList() {
         List<FTakeoutCommodity> fTakeoutCommodities = fTakeoutCommodityMapper.selectFTakeoutCommodityList();
         if(fTakeoutCommodities.size() < 1){
@@ -27,6 +29,9 @@ public class FTakeoutCommodityServiceImpl implements FTakeoutCommodityService {
         return fTakeoutCommodities;
     }
 
+    /*
+     * 新增外卖商品
+     * */
     @Override
     @Transactional
     public int insertFTakeoutCommodity(FTakeoutCommodityVo fTakeoutCommodityVo) {
@@ -37,6 +42,9 @@ public class FTakeoutCommodityServiceImpl implements FTakeoutCommodityService {
         return num;
     }
 
+    /*
+     * 修改外卖商品信息
+     * */
     @Override
     @Transactional
     public int updateFTakeoutCommodity(FTakeoutCommodity fTakeoutCommodity) {
@@ -47,6 +55,9 @@ public class FTakeoutCommodityServiceImpl implements FTakeoutCommodityService {
         return num;
     }
 
+    /*
+     * 删除外卖商品
+     * */
     @Override
     @Transactional
     public int deleteFTakeoutCommodityById(int cId) {

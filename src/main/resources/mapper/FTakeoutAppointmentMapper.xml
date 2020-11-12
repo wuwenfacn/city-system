@@ -12,12 +12,14 @@
         <result property="aRemark" column="a_remark"/>
     </resultMap>
 
+    <!--展示所有的预约信息-->
     <select id="selectFTakeoutAppointmentList" resultMap="FTakeoutAppointmentMapper">
         select a_id, a_name, a_price, a_time, a_number, a_remark
         from f_takeout_appointment
         where delete_status = 1;
     </select>
 
+    <!--新增预约-->
     <insert id="insertFTakeoutAppointment">
         insert into f_takeout_appointment(a_name, a_price, a_time, a_number, a_remark)
         values (#{fTakeoutAppointmentVo.aName}, #{fTakeoutAppointmentVo.aPrice},
@@ -25,6 +27,7 @@
                 #{fTakeoutAppointmentVo.aRemark});
     </insert>
 
+    <!--修改预约-->
     <update id="updateFTakeoutAppointment">
         update f_takeout_appointment
         set a_name   = #{fTakeoutAppointment.aName},
@@ -36,6 +39,7 @@
           and delete_status = 1;
     </update>
 
+    <!--删除预约-->
     <update id="deleteFTakeoutAppointment">
         update f_takeout_appointment
         set delete_status = 0

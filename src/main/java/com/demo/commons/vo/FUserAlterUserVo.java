@@ -9,8 +9,6 @@ public class FUserAlterUserVo {
 
     private String uUsername;
 
-    /*private String uPassword;*/
-
     private String shopName;
 
     private String businessLicense;
@@ -38,8 +36,6 @@ public class FUserAlterUserVo {
     private String contactName;
 
     private String businessTime;
-
-    /*private Integer deleteStatus;*/
 
 }
 

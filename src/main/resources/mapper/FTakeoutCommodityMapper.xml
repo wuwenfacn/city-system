@@ -11,18 +11,21 @@
         <result property="cPrice" column="c_price"/>
     </resultMap>
 
+    <!--显示所有的外卖商品信息-->
     <select id="selectFTakeoutCommodityList" resultMap="FTakeoutCommodityMapper">
         select c_id, c_name, c_type, c_img, c_price
         from f_takeout_commodity
         where delete_status = 1;
     </select>
 
+    <!--新增外卖商品-->
     <insert id="insertFTakeoutCommodity">
         insert into f_takeout_commodity(c_name, c_type, c_img, c_price)
         values (#{fTakeoutCommodityVo.cName}, #{fTakeoutCommodityVo.cType},
                 #{fTakeoutCommodityVo.cImg}, #{fTakeoutCommodityVo.cPrice});
     </insert>
 
+    <!--修改外卖商品信息-->
     <update id="updateFTakeoutCommodity">
         update f_takeout_commodity
         set c_name  = #{fTakeoutCommodity.cName},
@@ -33,6 +36,7 @@
           and delete_status = 1;
     </update>
 
+    <!--删除外卖商品-->
     <update id="deleteFTakeoutCommodityById">
         update f_takeout_commodity
         set delete_status = 0
