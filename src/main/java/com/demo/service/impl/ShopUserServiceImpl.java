@@ -26,45 +26,42 @@ public class ShopUserServiceImpl implements ShopUserService {
      * 登录功能
      * */
     @Override
-    public ShopUserLoginVo login(ShopUserLoginVo shopUserLoginVo, HttpServletRequest request) {
+    public Boolean login(ShopUserLoginVo shopUserLoginVo, HttpServletRequest request) {
         /*
         * 创建session
         * */
         HttpSession session = request.getSession();
+
         /*
-        * 如果前端传来的数据是空的，就抛出异常 “参数不能为空”
+        * 根据账号从数据库中获取对应的账号信息
         * */
-        if(shopUserLoginVo.getUsername() == null || shopUserLoginVo.getUsername() == "" ||
-                shopUserLoginVo.getPassword() == null || shopUserLoginVo.getPassword() == ""){
-            throw new ServiceException(ResultCodeEnum.PARAMS_NOT_IS_BLANK);
-        }
+        ShopUser login = shopUserMapper.login(shopUserLoginVo.getUsername());
         /*
-        * 先验证账号是否存在，不存在则抛出异常 “账号或密码错误”
-        * */
-        if(shopUserMapper.checkUserByName(shopUserLoginVo.getUsername()) == null){
-            throw new ServiceException(ResultCodeEnum.ACCOUNT_LOGIN_ERROR);
-        }
-        ShopUser login = shopUserMapper.login(shopUserLoginVo);
-        /*
-        * 如果数据库返回的数据为空，则抛出异常 “账号或密码错误”
-        * */
-        if(login == null){
-            throw new ServiceException(ResultCodeEnum.ACCOUNT_LOGIN_ERROR);
-        }
-        /*
-        * 将登录的账号保存到session
-        * 如果session为空则保存
-        * 如果session不为空则抛出异常 “用户已登录”
-        * */
-        if(session.getAttribute("admin") == null){
-            session.setAttribute("admin", shopUserLoginVo.getUsername());
-            session.setMaxInactiveInterval(60*60);
+         * 如果数据库返回的数据为空，则抛出异常 “账号或密码错误”
+         * */
+        if(login != null){
+            /*
+            * 将从数据库中获取的密码和前端传来的密码进行校验，不一样则抛出异常 “账号或密码错误”
+            * */
+            if(login.getPassword().equals(shopUserLoginVo.getPassword())){
+                /*
+                 * 将登录的账号保存到session
+                 * 如果session为空则保存
+                 * 如果session不为空则抛出异常 “用户已登录”
+                 * */
+                if(session.getAttribute("admin") == null){
+                    session.setAttribute("admin", shopUserLoginVo.getUsername());
+                    session.setMaxInactiveInterval(60*60);
+                }else {
+                    throw new ServiceException(ResultCodeEnum.ACCOUNT_IS_LOGIN);
+                }
+                return true;
+            }else {
+                throw new ServiceException(ResultCodeEnum.ACCOUNT_LOGIN_ERROR);
+            }
         }else {
-            throw new ServiceException(ResultCodeEnum.ACCOUNT_IS_LOGIN);
+            throw new ServiceException(ResultCodeEnum.ACCOUNT_LOGIN_ERROR);
         }
-        /*FUserLoginVo fUserLoginVo1 = BeanConvertUtils.convertTo(login, FUserLoginVo::new);*/
-        ShopUserLoginVo shopUserLoginVo1 = BeanConvertUtils.convertTo(login, ShopUserLoginVo::new);
-        return shopUserLoginVo1;
     }
 
     /*
@@ -79,7 +76,7 @@ public class ShopUserServiceImpl implements ShopUserService {
         if(session.getAttribute("admin") != null){
             session.invalidate();
         }
-        return "session清除成功！";
+        return "注销成功！";
     }
 
     /*
