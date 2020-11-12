@@ -1,6 +1,8 @@
 package com.demo.service.impl;
 
+import com.demo.commons.exception.ServiceException;
 import com.demo.commons.requestEntity.GroupBuyingRequest;
+import com.demo.commons.result.ResultCodeEnum;
 import com.demo.entity.Groupbuying;
 import com.demo.mapper.GroupbuyingMapper;
 import com.demo.service.GroupBuyingService;
@@ -26,13 +28,23 @@ public class GroupBuyingServiceImpl implements GroupBuyingService {
     public boolean addCoupon(GroupBuyingRequest groupBuyingRequest) {
         Groupbuying groupbuying = new Groupbuying();
         BeanUtils.copyProperties(groupBuyingRequest,groupbuying);
-        int insert = groupbuyingMapper.insert(groupbuying);
-        return insert>0;
+        int temp=0;
+        try{
+            temp = groupbuyingMapper.insert(groupbuying);
+        }catch (RuntimeException exception){
+            throw new ServiceException(ResultCodeEnum.SQL_INSERT_ERROR);
+        }
+        return temp>0;
     }
 
     @Override
     public boolean deleteCoupon(GroupBuyingRequest groupBuyingRequest) {
-        int i = groupbuyingMapper.deleteByPrimaryKey(groupBuyingRequest.getGid());
+        int i = 0;
+        try{
+            i = groupbuyingMapper.deleteByPrimaryKey(groupBuyingRequest.getGid());
+        }catch (RuntimeException exception){
+            throw new ServiceException(ResultCodeEnum.SQL_DELETE_ERROR);
+        }
         return i>0;
     }
 
@@ -40,7 +52,12 @@ public class GroupBuyingServiceImpl implements GroupBuyingService {
     public boolean updateCoupon(GroupBuyingRequest groupBuyingRequest) {
         Groupbuying groupbuying = new Groupbuying();
         BeanUtils.copyProperties(groupBuyingRequest,groupbuying);
-        int i = groupbuyingMapper.updateByPrimaryKeySelective(groupbuying);
+        int i = 0;
+        try{
+            i = groupbuyingMapper.updateByPrimaryKeySelective(groupbuying);
+        }catch (RuntimeException exception){
+            throw new ServiceException(ResultCodeEnum.SQL_UPDATE_ERROR);
+        }
         return i>0;
     }
 
@@ -50,6 +67,9 @@ public class GroupBuyingServiceImpl implements GroupBuyingService {
         BeanUtils.copyProperties(groupBuyingRequest,groupbuying);
         PageHelper.startPage(page,size);
         List<Groupbuying> groupbuyings = groupbuyingMapper.selectByPrimaryKey(groupbuying);
+        if (groupbuyings==null) {
+            throw new ServiceException(ResultCodeEnum.SQL_INSERT_ERROR);
+        }
         PageInfo pageInfo = new PageInfo<>(groupbuyings);
         List list = pageInfo.getList();
         return list;
