@@ -60,6 +60,7 @@
           and delete_status = 1;
     </update>
 
+    <!--判断用户名是否存在-->
     <select id="checkUserByName" resultMap="FUserMapper">
         select u_username
         from f_user
@@ -67,6 +68,7 @@
         and delete_status = 1;
     </select>
 
+    <!--判断id是否存在-->
     <select id="checkUserByuId" resultMap="FUserMapper">
         select u_id
         from f_user

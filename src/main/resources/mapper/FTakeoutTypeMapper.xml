@@ -10,17 +10,20 @@
         <result property="tState" column="t_state"/>
     </resultMap>
 
+    <!--查看所有分类信息-->
     <select id="selectFTakeoutTypeList" resultMap="FTakeoutTypeMapper">
         select t_id, t_name, t_sort, t_state
         from f_takeout_type
         where delete_status = 1;
     </select>
 
+    <!--添加分类-->
     <insert id="insertFTakeoutType">
         insert into f_takeout_type(t_name, t_sort, t_state)
         values (#{fTakeoutType.tName}, #{fTakeoutType.tSort}, #{fTakeoutType.tState});
     </insert>
 
+    <!--修改分类-->
     <update id="updateFTakeoutTypeById">
         update f_takeout_type
         set t_name  = #{fTakeoutType.tName},
@@ -30,6 +33,7 @@
           and delete_status = 1;
     </update>
 
+    <!--删除分类-->
     <update id="deleteFTakeoutTypeById">
         update f_takeout_type
         set delete_status = 0

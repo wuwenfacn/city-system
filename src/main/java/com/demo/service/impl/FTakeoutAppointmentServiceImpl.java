@@ -17,8 +17,10 @@ public class FTakeoutAppointmentServiceImpl implements FTakeoutAppointmentServic
     @Resource
     FTakeoutAppointmentMapper fTakeoutAppointmentMapper;
 
+    /*
+     * 展示所有的预约信息
+     * */
     @Override
-    @Transactional
     public List<FTakeoutAppointment> selectFTakeoutAppointmentList() {
         List<FTakeoutAppointment> fTakeoutAppointments = fTakeoutAppointmentMapper.selectFTakeoutAppointmentList();
         if(fTakeoutAppointments.size() < 1){
@@ -27,6 +29,9 @@ public class FTakeoutAppointmentServiceImpl implements FTakeoutAppointmentServic
         return fTakeoutAppointments;
     }
 
+    /*
+     * 新增预约
+     * */
     @Override
     @Transactional
     public int insertFTakeoutAppointment(FTakeoutAppointmentVo fTakeoutAppointmentVo) {
@@ -37,6 +42,9 @@ public class FTakeoutAppointmentServiceImpl implements FTakeoutAppointmentServic
         return num;
     }
 
+    /*
+     * 修改预约
+     * */
     @Override
     @Transactional
     public int updateFTakeoutAppointment(FTakeoutAppointment fTakeoutAppointment) {
@@ -47,6 +55,9 @@ public class FTakeoutAppointmentServiceImpl implements FTakeoutAppointmentServic
         return num;
     }
 
+    /*
+     * 删除预约
+     * */
     @Override
     @Transactional
     public int deleteFTakeoutAppointment(int aId) {

@@ -18,6 +18,7 @@ public class FShopController {
     FShopService fShopService;
 
     /*
+    * 根据状态展示上架商品和下架商品
     * status：上线状态，0表示下线，1表示上线
     * */
     @GetMapping("/uporout")

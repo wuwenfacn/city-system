@@ -20,8 +20,11 @@ public class FShopServiceImpl implements FShopService {
     @Resource
     FShopMapper fShopMapper;
 
+    /*
+     * 根据状态展示上架商品和下架商品
+     * status：上线状态，0表示下线，1表示上线
+     * */
     @Override
-    @Transactional
     public List<FShopSelectVo> selectFShopList(int status) {
         List<FShop> fShops = fShopMapper.selectFShopList(status);
         if(fShops.size() < 1){
@@ -31,6 +34,9 @@ public class FShopServiceImpl implements FShopService {
         return fShopVos;
     }
 
+    /*
+     * 新增门店
+     * */
     @Override
     @Transactional
     public int insertFShop(FShopInsertVo fShop) {
@@ -41,6 +47,9 @@ public class FShopServiceImpl implements FShopService {
         return num;
     }
 
+    /*
+     * 门店资料更新
+     * */
     @Override
     @Transactional
     public int updateFShopBysId(FShopUpdateVo fShop) {
@@ -51,6 +60,9 @@ public class FShopServiceImpl implements FShopService {
         return num;
     }
 
+    /*
+     * 门店下架
+     * */
     @Override
     @Transactional
     public int updatesStatusOut(int sId) {
@@ -61,6 +73,9 @@ public class FShopServiceImpl implements FShopService {
         return num;
     }
 
+    /*
+     * 门店上架
+     * */
     @Override
     @Transactional
     public int updatesStatusUp(int sId) {
@@ -71,6 +86,9 @@ public class FShopServiceImpl implements FShopService {
         return num;
     }
 
+    /*
+     * 门店删除
+     * */
     @Override
     @Transactional
     public int updateDeleteStatus(int sId) {

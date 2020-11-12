@@ -3,13 +3,10 @@ package com.demo.controller;
 import com.demo.commons.result.BaseResult;
 import com.demo.commons.vo.*;
 import com.demo.service.FUserService;
-import com.demo.service.impl.FUserServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletException;
 import javax.servlet.http.*;
-import java.io.IOException;
 
 @RestController
 @RequestMapping("/fuser")
@@ -17,12 +14,18 @@ public class FUserController {
     @Resource
     FUserService fUserService;
 
+    /*
+    * 登录功能
+    * */
     @GetMapping("/login")
-    public BaseResult login(@RequestBody FUserLoginVo fUserLoginVo,HttpServletRequest request){
+    public BaseResult login(@RequestBody FUserLoginVo fUserLoginVo, HttpServletRequest request){
         FUserLoginVo login = fUserService.login(fUserLoginVo,request);
         return BaseResult.success(login);
     }
 
+    /*
+     * 注销功能
+     * */
     @GetMapping("/off")
     public String off(HttpServletRequest request){
         return fUserService.off(request);
@@ -48,6 +51,9 @@ public class FUserController {
         "deleteStatus": 1
     }*/
 
+    /*
+    * 注册功能
+    * */
     @PostMapping("/register")
     public BaseResult register(@RequestBody FUserRegisterVo fUserRegisterVo){
         int num = fUserService.register(fUserRegisterVo);
@@ -59,6 +65,9 @@ public class FUserController {
         "upassword": "4"
     }*/
 
+    /*
+     * 修改密码功能
+     * */
     @PutMapping("alterPassword")
     public BaseResult alterPassword(@RequestBody FUserAlterPasswordVo fUserAlterPasswordVo){
         int num = fUserService.alterPassword(fUserAlterPasswordVo);
@@ -84,6 +93,9 @@ public class FUserController {
         "businessTime": "3"
     }*/
 
+    /*
+    * 修改个人信息
+    * */
     @PutMapping("alterUser")
     public BaseResult alterUser(@RequestBody FUserAlterUserVo fUserAlterUserVo){
         int num = fUserService.alterUser(fUserAlterUserVo);

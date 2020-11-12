@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.FCommentMapper">
+    <resultMap id="FCommentVoMapper" type="com.demo.commons.vo.FCommentVo">
+        <id property="commentId" column="comment_id"></id>
+        <result property="commentStar" column="comment_star"></result>
+        <result property="commentContent" column="comment_content"></result>
+        <result property="commentImage" column="comment_image"></result>
+        <result property="commentReply" column="comment_reply"></result>
+        <result property="cName" column="c_name"></result>
+        <result property="uUsername" column="u_username"></result>
+        <result property="commentCreateTime" column="comment_create_time"></result>
+    </resultMap>
+
+    <!--三表连接查询，展示所有评论-->
+    <select id="selectFCommentList" resultMap="FCommentVoMapper">
+        select
+        c.comment_id,c.comment_star,c.comment_content,c.comment_image,c.comment_reply,
+        t.c_name,u.u_username,c.comment_create_time
+        from f_comment c
+        LEFT JOIN f_takeout_commodity t
+        on c.c_id = t.c_id
+        LEFT JOIN f_user u
+        on c.u_id = u.u_id
+        where c.delete_status = t.delete_status = u.delete_status = 1
+    </select>
+
+    <!--商家回复评论-->
+    <update id="insertReplyByCommentId">
+        update f_comment
+        set comment_reply = #{commentReply}
+        where comment_id = #{commentId}
+        and comment_reply = 'null'
+        and delete_status = 1;
+    </update>
+
+    <!--商家删除评论-->
+    <update id="deleteReplyByCommentId">
+        update f_comment
+        set delete_status = 0
+        where delete_status = 1
+        and comment_id = #{commentId};
+    </update>
+</mapper>

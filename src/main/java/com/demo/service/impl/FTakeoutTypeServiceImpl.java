@@ -17,8 +17,10 @@ public class FTakeoutTypeServiceImpl implements FTakeoutTypeService {
     @Resource
     FTakeoutTypeMapper fTakeoutTypeMapper;
 
+    /*
+     * 显示所有的外卖分类
+     * */
     @Override
-    @Transactional
     public List<FTakeoutType> selectFTakeoutTypeList() {
         List<FTakeoutType> fTakeoutTypes = fTakeoutTypeMapper.selectFTakeoutTypeList();
         if(fTakeoutTypes.size() < 1){
@@ -27,6 +29,9 @@ public class FTakeoutTypeServiceImpl implements FTakeoutTypeService {
         return fTakeoutTypes;
     }
 
+    /*
+     * 新增分类
+     * */
     @Override
     @Transactional
     public int insertFTakeoutType(FTakeoutTypeVo fTakeoutTypeVo) {
@@ -37,6 +42,9 @@ public class FTakeoutTypeServiceImpl implements FTakeoutTypeService {
         return num;
     }
 
+    /*
+     * 修改分类信息
+     * */
     @Override
     @Transactional
     public int updateFTakeoutTypeById(FTakeoutType fTakeoutType) {
@@ -47,6 +55,9 @@ public class FTakeoutTypeServiceImpl implements FTakeoutTypeService {
         return num;
     }
 
+    /*
+     * 删除分类
+     * */
     @Override
     @Transactional
     public int deleteFTakeoutTypeById(int tId) {

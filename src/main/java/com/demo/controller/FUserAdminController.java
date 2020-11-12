@@ -15,12 +15,18 @@ public class FUserAdminController {
     @Resource
     FUserAdminService fUserAdminService;
 
+    /*
+    * 展示所有用户信息
+    * */
     @GetMapping("/selectFUserList")
     public BaseResult<List<FUser>> selectFUserList() {
         List<FUser> fUsers = fUserAdminService.selectFUserList();
         return BaseResult.success(fUsers);
     }
 
+    /*
+    * 删除用户
+    * */
     @PutMapping("/deleteUser")
     public BaseResult deleteUser(int uId) {
         int num = fUserAdminService.deleteUser(uId);

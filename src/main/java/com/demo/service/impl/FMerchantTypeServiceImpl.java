@@ -15,10 +15,16 @@ public class FMerchantTypeServiceImpl implements FMerchantTypeService {
     @Resource
     FMerchantTypeMapper fMerchantTypeMapper;
 
+    /*
+     * 添加外卖基础设置表信息
+     * */
     @Override
     @Transactional
     public int insertFMerchantType(FMerchantType fMerchantType) {
         int num = fMerchantTypeMapper.insertFMerchantType(fMerchantType);
+        /*
+         * 如果没有添加成功就抛出异常 “ 数据错误 ”
+         * */
         if(num < 1){
             throw new ServiceException(ResultCodeEnum.DATA_IS_WRONG);
         }

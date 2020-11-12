@@ -8,7 +8,13 @@ import java.util.List;
 
 public interface FUserAdminService {
 
+    /*
+     * 展示所有用户信息
+     * */
     List<FUser> selectFUserList();
 
+    /*
+     * 删除用户
+     * */
     int deleteUser(@Param("uId") int uId);
 }
