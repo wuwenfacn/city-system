@@ -39,7 +39,7 @@ public class OrderServiceImpl implements OrderService {
     public List getList(OrderRequest orderRequest, int page, int size) {
         PageHelper.startPage(page,size);
         List<WOrder> wOrder = wOrderMapper.selectOrderByPid(orderRequest);
-        if (wOrder==null) {
+        if (wOrder.size() < 1) {
             throw new ServiceException(ResultCodeEnum.SQL_SELECT_ERROR);
         }
         PageInfo info = new PageInfo(wOrder);

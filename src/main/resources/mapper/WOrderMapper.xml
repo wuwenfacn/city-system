@@ -14,7 +14,7 @@
     <result column="u_id" jdbcType="INTEGER" property="uId" />
     <result column="o_diliver" jdbcType="VARCHAR" property="oDiliver" />
     <!--订单对产品一对多-->
-    <collection property="products" resultMap="com.demo.mapper.WProductMapper.BaseResultMap"/>
+    <collection property="wProductLis" resultMap="com.demo.mapper.WProductMapper.BaseResultMap"/>
 
   </resultMap>
   <sql id="Base_Column_List">

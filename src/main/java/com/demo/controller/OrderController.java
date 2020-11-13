@@ -3,10 +3,7 @@ package com.demo.controller;
 import com.demo.commons.requestEntity.OrderRequest;
 import com.demo.commons.result.BaseResult;
 import com.demo.service.impl.OrderServiceImpl;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -30,7 +27,7 @@ public class OrderController {
      * @param page 当前页
      * @param size 条数
      * @return
-       http://localhost:8080/api/order/list?pId=1&status=1&oType=1&page=2&size=2
+        http://localhost:8080/api/order/list?id=1&status=1&type=1&page=2&size=3
      */
     @GetMapping("/list")
     public BaseResult getOrderList(
