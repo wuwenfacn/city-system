@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/faudit")
+@RequestMapping("/audit")
 public class ShopAuditController {
     @Resource
     ShopAuditService shopAuditService;
@@ -31,7 +31,7 @@ public class ShopAuditController {
             "atrading": "5",
             "aaddress": "5"
     }*/
-    @PutMapping("/updatefaudit")
+    @PutMapping("/updateaudit")
     public BaseResult updateFAuditById(@RequestBody ShopAuditUpdateVo shopAuditUpdateVo){
         int num = shopAuditService.updateFAuditById(shopAuditUpdateVo);
         return BaseResult.success(num);
@@ -40,27 +40,27 @@ public class ShopAuditController {
     /*
     * 对下架申请进行审核，审核通过则允许下架
     * */
-    @PutMapping("/updatesstatusout")
-    public BaseResult updatesStatusOut(int sId, int aPass, String aPassReason){
-        int num = shopAuditService.updatesStatusOut(sId,aPass,aPassReason);
+    @PutMapping("/auditout")
+    public BaseResult updatesStatusOut(int id, int pass, String passReason){
+        int num = shopAuditService.updatesStatusOut(id,pass,passReason);
         return BaseResult.success(num);
     }
 
     /*
      * 对上架申请进行审核，审核通过则允许上架
      * */
-    @PutMapping("/updatesstatusup")
-    public BaseResult updatesStatusUp(int sId, int aPass, String aPassReason){
-        int num = shopAuditService.updatesStatusUp(sId,aPass,aPassReason);
+    @PutMapping("/auditup")
+    public BaseResult updatesStatusUp(int id, int pass, String passReason){
+        int num = shopAuditService.updatesStatusUp(id,pass,passReason);
         return BaseResult.success(num);
     }
 
     /*
      * 对删除申请进行审核，审核通过则允许删除
      * */
-    @PutMapping("/updatedeletestatus")
-    public BaseResult updateDeleteStatus(int sId, int aPass, String aPassReason){
-        int num = shopAuditService.updateDeleteStatus(sId,aPass,aPassReason);
+    @PutMapping("/auditdelete")
+    public BaseResult updateDeleteStatus(int id, int pass, String passReason){
+        int num = shopAuditService.updateDeleteStatus(id,pass,passReason);
         return BaseResult.success(num);
     }
 
@@ -68,9 +68,9 @@ public class ShopAuditController {
      * 显示所有要审核的数据
      * aStatus：审核状态，1表示已审核，2表示未审核
      * */
-    @GetMapping("/selectfauditlist")
-    public BaseResult<List<ShopAuditSelectVo>> selectFAuditList(int aStatus){
-        List<ShopAuditSelectVo> fAudits = shopAuditService.selectFAuditList(aStatus);
-        return BaseResult.success(fAudits);
+    @GetMapping("/showaudit")
+    public BaseResult<List<ShopAuditSelectVo>> selectFAuditList(int status){
+        List<ShopAuditSelectVo> audits = shopAuditService.selectFAuditList(status);
+        return BaseResult.success(audits);
     }
 }

@@ -25,29 +25,29 @@
                            s_back_img, s_product_img, s_environment_img, s_else_img, s_business,
                            s_province, s_city, s_district, s_trading, s_address, s_path, s_linkman,
                            s_phone, s_business_hours, s_brief)
-        values (#{fShop.sName}, #{fShop.sReserve}, #{fShop.sServe},
-                #{fShop.sLabel}, #{fShop.sLogo}, #{fShop.sBackImg}, #{fShop.sProductImg},
-                #{fShop.sEnvironmentImg}, #{fShop.sElseImg}, #{fShop.sBusiness},
-                #{fShop.sProvince}, #{fShop.sCity}, #{fShop.sDistrict}, #{fShop.sTrading},
-                #{fShop.sAddress}, #{fShop.sPath}, #{fShop.sLinkman}, #{fShop.sPhone},
-                #{fShop.sBusinessHours}, #{fShop.sBrief});
+        values (#{shop.sName}, #{shop.sReserve}, #{shop.sServe},
+                #{shop.sLabel}, #{shop.sLogo}, #{shop.sBackImg}, #{shop.sProductImg},
+                #{shop.sEnvironmentImg}, #{shop.sElseImg}, #{shop.sBusiness},
+                #{shop.sProvince}, #{shop.sCity}, #{shop.sDistrict}, #{shop.sTrading},
+                #{shop.sAddress}, #{shop.sPath}, #{shop.sLinkman}, #{shop.sPhone},
+                #{shop.sBusinessHours}, #{shop.sBrief});
     </insert>
 
     <!--门店资料更新-->
     <update id="updateFShopBysId">
         update f_shop
-        set s_logo            = #{fShop.sLogo},
-            s_back_img        = #{fShop.sBackImg},
-            s_product_img     = #{fShop.sProductImg},
-            s_environment_img = #{fShop.sEnvironmentImg},
-            s_else_img        = #{fShop.sElseImg},
-            s_address         = #{fShop.sAddress},
-            s_path            = #{fShop.sPath},
-            s_linkman         = #{fShop.sLinkman},
-            s_phone           = #{fShop.sPhone},
-            s_business_hours  = #{fShop.sBusinessHours},
-            s_brief           = #{fShop.sBrief}
-        where s_id = #{fShop.sId}
+        set s_logo            = #{shop.sLogo},
+            s_back_img        = #{shop.sBackImg},
+            s_product_img     = #{shop.sProductImg},
+            s_environment_img = #{shop.sEnvironmentImg},
+            s_else_img        = #{shop.sElseImg},
+            s_address         = #{shop.sAddress},
+            s_path            = #{shop.sPath},
+            s_linkman         = #{shop.sLinkman},
+            s_phone           = #{shop.sPhone},
+            s_business_hours  = #{shop.sBusinessHours},
+            s_brief           = #{shop.sBrief}
+        where s_id = #{shop.sId}
           and delete_status = 1;
     </update>
 
@@ -69,7 +69,7 @@
                now(),
                5
         from f_shop
-        where s_id = #{sId}
+        where s_id = #{id}
           and delete_status = 1
           and s_status = 1;
         <!--update f_shop set s_status = 0
@@ -96,7 +96,7 @@
                now(),
                4
         from f_shop
-        where s_id = #{sId}
+        where s_id = #{id}
           and delete_status = 1
           and s_status = 0;
         <!--update f_shop set s_status = 1
@@ -123,7 +123,7 @@
                now(),
                6
         from f_shop
-        where s_id = #{sId}
+        where s_id = #{id}
           and delete_status = 1;
         <!--update f_shop set delete_status = 0 where delete_status = 1 and s_id = #{sId};-->
     </update>

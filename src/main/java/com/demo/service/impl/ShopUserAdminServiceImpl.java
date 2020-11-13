@@ -36,11 +36,11 @@ public class ShopUserAdminServiceImpl implements ShopUserAdminService {
      * */
     @Override
     @Transactional
-    public int deleteUser(int uId) {
-        if(shopUserMapper.checkUserByuId(uId) == null){
+    public int deleteUser(int id) {
+        if(shopUserMapper.checkUserByuId(id) == null){
             throw new ServiceException(ResultCodeEnum.ACCOUNT_NOT_EXIST);
         }
-        int num = shopUserAdminMapper.deleteUser(uId);
+        int num = shopUserAdminMapper.deleteUser(id);
         if(num < 1){
             throw new ServiceException(ResultCodeEnum.DATA_IS_WRONG);
         }

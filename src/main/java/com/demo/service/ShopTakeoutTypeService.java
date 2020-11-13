@@ -25,5 +25,5 @@ public interface ShopTakeoutTypeService {
     /*
      * 删除分类
      * */
-    int deleteFTakeoutTypeById(int tId);
+    int deleteFTakeoutTypeById(int id);
 }

@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/fuseradmin")
+@RequestMapping("/useradmin")
 public class ShopUserAdminController {
     @Resource
     ShopUserAdminService shopUserAdminService;
@@ -17,7 +17,7 @@ public class ShopUserAdminController {
     /*
     * 展示所有用户信息
     * */
-    @GetMapping("/selectFUserList")
+    @GetMapping("/showuser")
     public BaseResult<List<ShopUser>> selectFUserList() {
         List<ShopUser> shopUsers = shopUserAdminService.selectFUserList();
         return BaseResult.success(shopUsers);
@@ -26,9 +26,9 @@ public class ShopUserAdminController {
     /*
     * 删除用户
     * */
-    @PutMapping("/deleteUser")
-    public BaseResult deleteUser(int uId) {
-        int num = shopUserAdminService.deleteUser(uId);
+    @PutMapping("/deleteuser")
+    public BaseResult deleteUser(int id) {
+        int num = shopUserAdminService.deleteUser(id);
         return BaseResult.success(num);
     }
 }

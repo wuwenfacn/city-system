@@ -69,7 +69,7 @@ public class ShopUserController {
     /*
      * 修改密码功能
      * */
-    @PutMapping("alterPassword")
+    @PutMapping("updatepassword")
     public BaseResult alterPassword(@RequestBody ShopUserAlterPasswordVo shopUserAlterPasswordVo){
         int num = shopUserService.alterPassword(shopUserAlterPasswordVo);
         return BaseResult.success(num);
@@ -97,7 +97,7 @@ public class ShopUserController {
     /*
     * 修改个人信息
     * */
-    @PutMapping("alterUser")
+    @PutMapping("updateuser")
     public BaseResult alterUser(@RequestBody ShopUserAlterUserVo shopUserAlterUserVo){
         int num = shopUserService.alterUser(shopUserAlterUserVo);
         return BaseResult.success(num);

@@ -37,7 +37,7 @@
     <update id="deleteFTakeoutTypeById">
         update f_takeout_type
         set delete_status = 0
-        where t_id = #{tId}
+        where t_id = #{id}
           and delete_status = 1;
     </update>
 </mapper>

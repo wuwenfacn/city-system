@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/fcomment")
+@RequestMapping("/comment")
 public class ShopCommentController {
     @Resource
     ShopCommentService shopCommentService;
@@ -17,7 +17,7 @@ public class ShopCommentController {
     /*
      * 展示评论表
      * */
-    @GetMapping("/selectFCommentList")
+    @GetMapping("/showcomment")
     public BaseResult selectFCommentList(){
         List<ShopCommentVo> shopCommentVos = shopCommentService.selectFCommentList();
         return BaseResult.success(shopCommentVos);
@@ -26,7 +26,7 @@ public class ShopCommentController {
     /*
      * 商家回复
      * */
-    @PutMapping("/insertReplyByUid")
+    @PutMapping("/merchantreply")
     public BaseResult insertReplyByUid(int commentId,String commentReply){
         int num = shopCommentService.insertReplyByUid(commentId,commentReply);
         return BaseResult.success(num);
@@ -35,7 +35,7 @@ public class ShopCommentController {
     /*
      * 删除评论
      * */
-    @PutMapping("/deleteReplyByCommentId")
+    @PutMapping("/deletecomment")
     public BaseResult deleteReplyByCommentId(int commentId){
         int num = shopCommentService.deleteReplyByCommentId(commentId);
         return BaseResult.success(num);

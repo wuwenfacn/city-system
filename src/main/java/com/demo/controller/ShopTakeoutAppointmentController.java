@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ftakeoutappointment")
+@RequestMapping("/reserved")
 public class ShopTakeoutAppointmentController {
     @Resource
     ShopTakeoutAppointmentService shopTakeoutAppointmentService;
@@ -18,7 +18,7 @@ public class ShopTakeoutAppointmentController {
     /*
      * 展示所有的预约信息
      * */
-    @GetMapping("/selectftakeoutappointmentlist")
+    @GetMapping("/showreserved")
     public BaseResult<List<ShopTakeoutAppointment>> selectFTakeoutAppointmentList(){
         List<ShopTakeoutAppointment> shopTakeoutAppointments = shopTakeoutAppointmentService.selectFTakeoutAppointmentList();
         return BaseResult.success(shopTakeoutAppointments);
@@ -36,7 +36,7 @@ public class ShopTakeoutAppointmentController {
         "aremark": "xxx"
     }*/
 
-    @PostMapping("/insertftakeoutcommodity")
+    @PostMapping("/addreserved")
     public BaseResult insertFTakeoutCommodity(@RequestBody ShopTakeoutAppointmentVo shopTakeoutAppointmentVo){
         int num = shopTakeoutAppointmentService.insertFTakeoutAppointment(shopTakeoutAppointmentVo);
         return BaseResult.success(num);
@@ -55,7 +55,7 @@ public class ShopTakeoutAppointmentController {
         "aremark": "xxx"
     }*/
 
-    @PutMapping("/updateFTakeoutCommodity")
+    @PutMapping("/updatereserved")
     public BaseResult updateFTakeoutCommodity(@RequestBody ShopTakeoutAppointment shopTakeoutAppointment){
         int num = shopTakeoutAppointmentService.updateFTakeoutAppointment(shopTakeoutAppointment);
         return BaseResult.success(num);
@@ -64,9 +64,9 @@ public class ShopTakeoutAppointmentController {
     /*
      * 删除预约
      * */
-    @PutMapping("/deleteFTakeoutCommodityById")
-    public BaseResult deleteFTakeoutCommodityById(int aId){
-        int num = shopTakeoutAppointmentService.deleteFTakeoutAppointment(aId);
+    @PutMapping("/deletereserved")
+    public BaseResult deleteFTakeoutCommodityById(int id){
+        int num = shopTakeoutAppointmentService.deleteFTakeoutAppointment(id);
         return BaseResult.success(num);
     }
 }

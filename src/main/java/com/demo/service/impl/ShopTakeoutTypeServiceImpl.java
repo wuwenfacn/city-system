@@ -60,8 +60,8 @@ public class ShopTakeoutTypeServiceImpl implements ShopTakeoutTypeService {
      * */
     @Override
     @Transactional
-    public int deleteFTakeoutTypeById(int tId) {
-        int num = shopTakeoutTypeMapper.deleteFTakeoutTypeById(tId);
+    public int deleteFTakeoutTypeById(int id) {
+        int num = shopTakeoutTypeMapper.deleteFTakeoutTypeById(id);
         if(num < 1){
             throw new ServiceException(ResultCodeEnum.DATA_IS_WRONG);
         }

@@ -25,5 +25,5 @@ public interface ShopTakeoutAppointmentMapper {
     /*
      * 删除预约
      * */
-    int deleteFTakeoutAppointment(@Param("aId") int aId);
+    int deleteFTakeoutAppointment(@Param("id") int id);
 }

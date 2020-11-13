@@ -25,5 +25,5 @@ public interface ShopTakeoutAppointmentService {
     /*
      * 删除预约
      * */
-    int deleteFTakeoutAppointment(int aId);
+    int deleteFTakeoutAppointment(int id);
 }

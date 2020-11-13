@@ -40,8 +40,8 @@ public class ShopAuditServiceImpl implements ShopAuditService {
      * */
     @Override
     @Transactional
-    public int updatesStatusOut(int sId, int aPass, String aPassReason) {
-        int num = shopAuditMapper.updatesStatusOut(sId, aPass, aPassReason);
+    public int updatesStatusOut(int id, int pass, String passReason) {
+        int num = shopAuditMapper.updatesStatusOut(id, pass, passReason);
         /*
          * 如果没有修改成功就抛出异常 “ 数据错误 ”
          * */
@@ -56,8 +56,8 @@ public class ShopAuditServiceImpl implements ShopAuditService {
      * */
     @Override
     @Transactional
-    public int updatesStatusUp(int sId, int aPass, String aPassReason) {
-        int num = shopAuditMapper.updatesStatusUp(sId, aPass, aPassReason);
+    public int updatesStatusUp(int id, int pass, String passReason) {
+        int num = shopAuditMapper.updatesStatusUp(id, pass, passReason);
         /*
          * 如果没有修改成功就抛出异常 “ 数据错误 ”
          * */
@@ -72,8 +72,8 @@ public class ShopAuditServiceImpl implements ShopAuditService {
      * */
     @Override
     @Transactional
-    public int updateDeleteStatus(int sId, int aPass, String aPassReason) {
-        int num = shopAuditMapper.updateDeleteStatus(sId, aPass, aPassReason);
+    public int updateDeleteStatus(int id, int pass, String passReason) {
+        int num = shopAuditMapper.updateDeleteStatus(id, pass, passReason);
         /*
          * 如果没有修改成功就抛出异常 “ 数据错误 ”
          * */
@@ -88,8 +88,8 @@ public class ShopAuditServiceImpl implements ShopAuditService {
      * aStatus：审核状态，1表示已审核，2表示未审核
      * */
     @Override
-    public List<ShopAuditSelectVo> selectFAuditList(int aStatus) {
-        List<ShopAudit> shopAudits = shopAuditMapper.selectFAuditList(aStatus);
+    public List<ShopAuditSelectVo> selectFAuditList(int status) {
+        List<ShopAudit> shopAudits = shopAuditMapper.selectFAuditList(status);
         /*
          * 如果查找失败就抛出异常 “ 系统繁忙，请稍后重试 ”
          * */

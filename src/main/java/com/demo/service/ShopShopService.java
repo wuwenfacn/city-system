@@ -17,26 +17,26 @@ public interface ShopShopService {
     /*
      * 新增门店
      * */
-    int insertFShop(ShopShopInsertVo fShop);
+    int insertFShop(ShopShopInsertVo shop);
 
     /*
      * 门店资料更新
      * */
-    int updateFShopBysId(ShopShopUpdateVo fShop);
+    int updateFShopBysId(ShopShopUpdateVo shop);
 
     /*
      * 门店下架
      * */
-    int updatesStatusOut(int sId);
+    int updatesStatusOut(int id);
 
     /*
      * 门店上架
      * */
-    int updatesStatusUp(int sId);
+    int updatesStatusUp(int id);
 
     /*
      * 门店删除
      * */
-    int updateDeleteStatus(int sId);
+    int updateDeleteStatus(int id);
 
 }

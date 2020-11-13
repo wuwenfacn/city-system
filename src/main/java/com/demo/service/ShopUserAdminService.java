@@ -15,5 +15,5 @@ public interface ShopUserAdminService {
     /*
      * 删除用户
      * */
-    int deleteUser(@Param("uId") int uId);
+    int deleteUser(int id);
 }

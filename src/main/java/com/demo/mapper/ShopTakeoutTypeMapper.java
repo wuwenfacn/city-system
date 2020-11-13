@@ -25,6 +25,6 @@ public interface ShopTakeoutTypeMapper {
     /*
      * 删除分类
      * */
-    int deleteFTakeoutTypeById(@Param("tId") int tId);
+    int deleteFTakeoutTypeById(@Param("id") int id);
 
 }

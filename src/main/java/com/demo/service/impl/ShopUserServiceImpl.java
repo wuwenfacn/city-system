@@ -31,7 +31,6 @@ public class ShopUserServiceImpl implements ShopUserService {
         * 创建session
         * */
         HttpSession session = request.getSession();
-
         /*
         * 根据账号从数据库中获取对应的账号信息
         * */

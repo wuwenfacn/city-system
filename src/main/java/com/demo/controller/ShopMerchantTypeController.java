@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 @RestController
-@RequestMapping("/fmerchant")
+@RequestMapping("/merchant")
 public class ShopMerchantTypeController {
     @Resource
     ShopMerchantTypeService shopMerchantTypeService;
@@ -29,7 +29,7 @@ public class ShopMerchantTypeController {
             "mnotice":"xxx"
     }*/
 
-    @PostMapping("/insertfmerchanttype")
+    @PostMapping("/addmerchant")
     public BaseResult insertFMerchantType(@RequestBody ShopMerchantType shopMerchantType){
         int num = shopMerchantTypeService.insertFMerchantType(shopMerchantType);
         return BaseResult.success(num);

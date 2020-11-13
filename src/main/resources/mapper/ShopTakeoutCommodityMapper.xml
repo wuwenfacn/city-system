@@ -40,7 +40,7 @@
     <update id="deleteFTakeoutCommodityById">
         update f_takeout_commodity
         set delete_status = 0
-        where c_id = #{cId}
+        where c_id = #{id}
           and delete_status = 1;
     </update>
 </mapper>

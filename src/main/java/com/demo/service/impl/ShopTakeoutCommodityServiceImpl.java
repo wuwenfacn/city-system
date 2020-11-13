@@ -60,8 +60,8 @@ public class ShopTakeoutCommodityServiceImpl implements ShopTakeoutCommodityServ
      * */
     @Override
     @Transactional
-    public int deleteFTakeoutCommodityById(int cId) {
-        int num = shopTakeoutCommodityMapper.deleteFTakeoutCommodityById(cId);
+    public int deleteFTakeoutCommodityById(int id) {
+        int num = shopTakeoutCommodityMapper.deleteFTakeoutCommodityById(id);
         if(num < 1){
             throw new ServiceException(ResultCodeEnum.DATA_IS_WRONG);
         }

@@ -26,7 +26,7 @@ public interface ShopUserMapper {
     /*
      * 校验id是否存在
      * */
-    ShopUser checkUserByuId(@Param("uId")int uId);
+    ShopUser checkUserByuId(@Param("id")int id);
 
     /*
      * 修改密码，传递id和新密码

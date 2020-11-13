@@ -16,25 +16,25 @@ public interface ShopShopMapper {
     /*
     * 添加新门店
     * */
-    int insertFShop(@Param("fShop") ShopShopInsertVo fShop);
+    int insertFShop(@Param("shop") ShopShopInsertVo shop);
 
     /*
     * 门店资料更新
     * */
-    int updateFShopBysId(@Param("fShop") ShopShopUpdateVo fShop);
+    int updateFShopBysId(@Param("shop") ShopShopUpdateVo shop);
 
     /*
     * 门店下架
     * */
-    int updatesStatusOut(@Param("sId") int sId);
+    int updatesStatusOut(@Param("id") int id);
 
     /*
      * 门店上架
      * */
-    int updatesStatusUp(@Param("sId") int sId);
+    int updatesStatusUp(@Param("id") int id);
 
     /*
      * 门店删除
      * */
-    int updateDeleteStatus(@Param("sId") int sId);
+    int updateDeleteStatus(@Param("id") int id);
 }

@@ -60,8 +60,8 @@ public class ShopTakeoutAppointmentServiceImpl implements ShopTakeoutAppointment
      * */
     @Override
     @Transactional
-    public int deleteFTakeoutAppointment(int aId) {
-        int num = shopTakeoutAppointmentMapper.deleteFTakeoutAppointment(aId);
+    public int deleteFTakeoutAppointment(int id) {
+        int num = shopTakeoutAppointmentMapper.deleteFTakeoutAppointment(id);
         if(num < 1){
             throw new ServiceException(ResultCodeEnum.DATA_IS_WRONG);
         }

@@ -26,5 +26,5 @@ public interface ShopTakeoutCommodityMapper {
     /*
     * 删除外卖商品
     * */
-    int deleteFTakeoutCommodityById(@Param("cId") int cId);
+    int deleteFTakeoutCommodityById(@Param("id") int id);
 }

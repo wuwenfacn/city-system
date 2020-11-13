@@ -43,7 +43,7 @@
     <update id="deleteFTakeoutAppointment">
         update f_takeout_appointment
         set delete_status = 0
-        where a_id = #{aId}
+        where a_id = #{id}
           and delete_status = 1;
     </update>
 </mapper>

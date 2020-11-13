@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ftakeouttype")
+@RequestMapping("/takeouttype")
 public class ShopTakeoutTypeController {
     @Resource
     ShopTakeoutTypeService shopTakeoutTypeService;
@@ -18,7 +18,7 @@ public class ShopTakeoutTypeController {
     /*
     * 显示所有的外卖分类
     * */
-    @GetMapping("/selectftakeout")
+    @GetMapping("/showtype")
     public BaseResult<List<ShopTakeoutType>> selectFTakeoutTypeList(){
         List<ShopTakeoutType> shopTakeoutTypes = shopTakeoutTypeService.selectFTakeoutTypeList();
         return BaseResult.success(shopTakeoutTypes);
@@ -34,7 +34,7 @@ public class ShopTakeoutTypeController {
         "tstate": 1
     }*/
 
-    @PostMapping("/insertftakeout")
+    @PostMapping("/addtype")
     public BaseResult insertFTakeoutType(@RequestBody ShopTakeoutTypeVo shopTakeoutTypeVo){
         int num = shopTakeoutTypeService.insertFTakeoutType(shopTakeoutTypeVo);
         return BaseResult.success(num);
@@ -51,7 +51,7 @@ public class ShopTakeoutTypeController {
         "tstate": 1
     }*/
 
-    @PutMapping("/updateftakeout")
+    @PutMapping("/updatetype")
     public BaseResult updateFTakeoutTypeById(@RequestBody ShopTakeoutType shopTakeoutType){
         int num = shopTakeoutTypeService.updateFTakeoutTypeById(shopTakeoutType);
         return BaseResult.success(num);
@@ -60,9 +60,9 @@ public class ShopTakeoutTypeController {
     /*
     * 删除分类
     * */
-    @PutMapping("/deleteftakeout")
-    public BaseResult deleteFTakeoutTypeById(int tId){
-        int num = shopTakeoutTypeService.deleteFTakeoutTypeById(tId);
+    @PutMapping("/deletetype")
+    public BaseResult deleteFTakeoutTypeById(int id){
+        int num = shopTakeoutTypeService.deleteFTakeoutTypeById(id);
         return BaseResult.success(num);
     }
 }

@@ -19,7 +19,7 @@ public interface ShopAuditMapper {
      * aPass：是否通过
      * aPassReason：是否通过的理由
      * */
-    int updatesStatusOut(@Param("sId") int sId,@Param("aPass") int aPass,@Param("aPassReason")String aPassReason);
+    int updatesStatusOut(@Param("id") int id,@Param("pass") int pass,@Param("passReason")String passReason);
 
     /*
      * 门店上架审核
@@ -27,7 +27,7 @@ public interface ShopAuditMapper {
      * aPass：是否通过
      * aPassReason：是否通过的理由
      * */
-    int updatesStatusUp(@Param("sId") int sId,@Param("aPass") int aPass,@Param("aPassReason")String aPassReason);
+    int updatesStatusUp(@Param("id") int id,@Param("pass") int pass,@Param("passReason")String passReason);
 
     /*
      * 门店删除审核
@@ -35,11 +35,11 @@ public interface ShopAuditMapper {
      * aPass：是否通过
      * aPassReason：是否通过的理由
      * */
-    int updateDeleteStatus(@Param("sId") int sId,@Param("aPass") int aPass,@Param("aPassReason")String aPassReason);
+    int updateDeleteStatus(@Param("id") int id,@Param("pass") int pass,@Param("passReason")String passReason);
 
     /*
      * 显示所有要审核的数据
      * aStatus：审核状态，1表示已审核，2表示未审核
      * */
-    List<ShopAudit> selectFAuditList(@Param("aStatus") int aStatus);
+    List<ShopAudit> selectFAuditList(@Param("status") int status);
 }

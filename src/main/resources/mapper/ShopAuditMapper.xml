@@ -35,11 +35,11 @@
     <update id="updatesStatusOut">
         update f_audit a,f_shop s
         set a.a_status      = 1,
-            a.a_pass        = #{aPass},
-            a.a_pass_reason = #{aPassReason},
+            a.a_pass        = #{pass},
+            a.a_pass_reason = #{passReason},
             s.s_status      = 0
-        where a.s_id = #{sId}
-          and s.s_id = #{sId}
+        where a.s_id = #{id}
+          and s.s_id = #{id}
           and a.a_type = 5
           and a.a_status = 2
           and s.delete_status = 1;
@@ -49,11 +49,11 @@
     <update id="updatesStatusUp">
         update f_audit a,f_shop s
         set a.a_status      = 1,
-            a.a_pass        = #{aPass},
-            a.a_pass_reason = #{aPassReason},
+            a.a_pass        = #{pass},
+            a.a_pass_reason = #{passReason},
             s.s_status      = 1
-        where a.s_id = #{sId}
-          and s.s_id = #{sId}
+        where a.s_id = #{id}
+          and s.s_id = #{id}
           and a.a_type = 4
           and a.a_status = 2
           and s.delete_status = 1;
@@ -63,11 +63,11 @@
     <update id="updateDeleteStatus">
         update f_audit a,f_shop s
         set a.a_status      = 1,
-            a.a_pass        = #{aPass},
-            a.a_pass_reason = #{aPassReason},
+            a.a_pass        = #{pass},
+            a.a_pass_reason = #{passReason},
             s.delete_status = 0
-        where a.s_id = #{sId}
-          and s.s_id = #{sId}
+        where a.s_id = #{id}
+          and s.s_id = #{id}
           and a.a_type = 6
           and a.a_status = 2
           and s.delete_status = 1;
@@ -85,6 +85,6 @@
                a_pass,
                a_pass_reason
         from f_audit
-        where a_status = #{aStatus};
+        where a_status = #{status};
     </select>
 </mapper>

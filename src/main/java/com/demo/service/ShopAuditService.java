@@ -15,22 +15,22 @@ public interface ShopAuditService {
     /*
      * 对下架申请进行审核，审核通过则允许下架
      * */
-    int updatesStatusOut(int sId, int aPass, String aPassReason);
+    int updatesStatusOut(int id, int pass, String passReason);
 
     /*
      * 对上架申请进行审核，审核通过则允许上架
      * */
-    int updatesStatusUp(int sId, int aPass, String aPassReason);
+    int updatesStatusUp(int id, int pass, String passReason);
 
     /*
      * 对删除申请进行审核，审核通过则允许删除
      * */
-    int updateDeleteStatus(int sId, int aPass, String aPassReason);
+    int updateDeleteStatus(int id, int pass, String passReason);
 
     /*
      * 显示所有要审核的数据
      * aStatus：审核状态，1表示已审核，2表示未审核
      * */
-    List<ShopAuditSelectVo> selectFAuditList(int aStatus);
+    List<ShopAuditSelectVo> selectFAuditList(int status);
 
 }

@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ftakeoutcommodity")
+@RequestMapping("/takeout")
 public class ShopTakeoutCommodityController {
     @Resource
     ShopTakeoutCommodityService shopTakeoutCommodityService;
@@ -18,7 +18,7 @@ public class ShopTakeoutCommodityController {
     /*
      * 显示所有的外卖商品信息
      * */
-    @GetMapping("/selectftakeoutcommodity")
+    @GetMapping("/showtakeout")
     public BaseResult<List<ShopTakeoutCommodity>> selectFTakeoutCommodityList(){
         List<ShopTakeoutCommodity> fTakeoutCommodities = shopTakeoutCommodityService.selectFTakeoutCommodityList();
         return BaseResult.success(fTakeoutCommodities);
@@ -35,7 +35,7 @@ public class ShopTakeoutCommodityController {
         "cprice": "99.99"
     }*/
 
-    @PostMapping("/insertftakeoutcommodity")
+    @PostMapping("/addtakeout")
     public BaseResult insertFTakeoutCommodity(@RequestBody ShopTakeoutCommodityVo shopTakeoutCommodityVo){
         int num = shopTakeoutCommodityService.insertFTakeoutCommodity(shopTakeoutCommodityVo);
         return BaseResult.success(num);
@@ -53,7 +53,7 @@ public class ShopTakeoutCommodityController {
         "cprice": "199.99"
     }*/
 
-    @PutMapping("/updateftakeoutcommodity")
+    @PutMapping("/updatetakeout")
     public BaseResult updateFTakeoutCommodity(@RequestBody ShopTakeoutCommodity shopTakeoutCommodity){
         int num = shopTakeoutCommodityService.updateFTakeoutCommodity(shopTakeoutCommodity);
         return BaseResult.success(num);
@@ -62,9 +62,9 @@ public class ShopTakeoutCommodityController {
     /*
      * 删除外卖商品
      * */
-    @PutMapping("/deleteftakeoutcommodity")
-    public BaseResult deleteFTakeoutCommodityById(int cId){
-        int num = shopTakeoutCommodityService.deleteFTakeoutCommodityById(cId);
+    @PutMapping("/deletetakeout")
+    public BaseResult deleteFTakeoutCommodityById(int id){
+        int num = shopTakeoutCommodityService.deleteFTakeoutCommodityById(id);
         return BaseResult.success(num);
     }
 }

@@ -71,7 +71,7 @@
     <select id="checkUserByuId" resultMap="FUserMapper">
         select u_id
         from f_user
-        where u_id = #{uId}
+        where u_id = #{id}
         and delete_status = 1;
     </select>
 

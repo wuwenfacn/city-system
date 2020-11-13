@@ -51,7 +51,7 @@
         update f_user
         set delete_status = 0
         where delete_status = 1
-        and u_id = #{uId};
+        and u_id = #{id};
     </update>
 
 </mapper>

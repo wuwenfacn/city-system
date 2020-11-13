@@ -25,5 +25,5 @@ public interface ShopTakeoutCommodityService {
     /*
      * 删除外卖商品
      * */
-    int deleteFTakeoutCommodityById(int cId);
+    int deleteFTakeoutCommodityById(int id);
 }

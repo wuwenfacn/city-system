@@ -14,5 +14,5 @@ public interface ShopUserAdminMapper {
     /*
     * 删除用户
     * */
-    int deleteUser(@Param("uId") int uId);
+    int deleteUser(@Param("id") int id);
 }

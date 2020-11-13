@@ -11,19 +11,19 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/fshop")
+@RequestMapping("/shop")
 public class ShopShopController {
     @Resource
     ShopShopService shopShopService;
 
     /*
-    * 根据状态展示上架商品和下架商品
+    * 根据状态展示上架门店和下架门店
     * status：上线状态，0表示下线，1表示上线
     * */
     @GetMapping("/uporout")
     public BaseResult<List<ShopShopSelectVo>> selectFShopList(int status){
-        List<ShopShopSelectVo> fShopVos = shopShopService.selectFShopList(status);
-        return BaseResult.success(fShopVos);
+        List<ShopShopSelectVo> shopVos = shopShopService.selectFShopList(status);
+        return BaseResult.success(shopVos);
     }
 
     /*
@@ -53,9 +53,9 @@ public class ShopShopController {
             "sbrief": "3"
     }*/
 
-    @PostMapping("/insertfshop")
-    public BaseResult insertFShop(@RequestBody ShopShopInsertVo fShop){
-        int num = shopShopService.insertFShop(fShop);
+    @PostMapping("/addshop")
+    public BaseResult insertFShop(@RequestBody ShopShopInsertVo shop){
+        int num = shopShopService.insertFShop(shop);
         return BaseResult.success(num);
     }
 
@@ -78,36 +78,36 @@ public class ShopShopController {
         "sbrief": "6"
     }*/
 
-    @PutMapping("/updatefshop")
-    public BaseResult updateFShopBysId(@RequestBody ShopShopUpdateVo fShop){
-        int num = shopShopService.updateFShopBysId(fShop);
+    @PutMapping("/updateshop")
+    public BaseResult updateFShopBysId(@RequestBody ShopShopUpdateVo shop){
+        int num = shopShopService.updateFShopBysId(shop);
         return BaseResult.success(num);
     }
 
     /*
     * 门店下架
     * */
-    @PutMapping("/outfshop")
-    public BaseResult updatesStatusOut(int sId){
-        int num = shopShopService.updatesStatusOut(sId);
+    @PutMapping("/outshop")
+    public BaseResult updatesStatusOut(int id){
+        int num = shopShopService.updatesStatusOut(id);
         return BaseResult.success(num);
     }
 
     /*
      * 门店上架
      * */
-    @PutMapping("/upfshop")
-    public BaseResult updatesStatusUp(int sId){
-        int num = shopShopService.updatesStatusUp(sId);
+    @PutMapping("/upshop")
+    public BaseResult updatesStatusUp(int id){
+        int num = shopShopService.updatesStatusUp(id);
         return BaseResult.success(num);
     }
 
     /*
      * 门店删除
      * */
-    @PutMapping("/deletefshop")
-    public BaseResult updateDeleteStatus(int sId){
-        int num = shopShopService.updateDeleteStatus(sId);
+    @PutMapping("/deleteshop")
+    public BaseResult updateDeleteStatus(int id){
+        int num = shopShopService.updateDeleteStatus(id);
         return BaseResult.success(num);
     }
 }

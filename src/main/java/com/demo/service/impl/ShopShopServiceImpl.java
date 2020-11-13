@@ -39,8 +39,8 @@ public class ShopShopServiceImpl implements ShopShopService {
      * */
     @Override
     @Transactional
-    public int insertFShop(ShopShopInsertVo fShop) {
-        int num = shopShopMapper.insertFShop(fShop);
+    public int insertFShop(ShopShopInsertVo shop) {
+        int num = shopShopMapper.insertFShop(shop);
         if(num < 1){
             throw new ServiceException(ResultCodeEnum.DATA_IS_WRONG);
         }
@@ -52,8 +52,8 @@ public class ShopShopServiceImpl implements ShopShopService {
      * */
     @Override
     @Transactional
-    public int updateFShopBysId(ShopShopUpdateVo fShop) {
-        int num = shopShopMapper.updateFShopBysId(fShop);
+    public int updateFShopBysId(ShopShopUpdateVo shop) {
+        int num = shopShopMapper.updateFShopBysId(shop);
         if(num < 1){
             throw new ServiceException(ResultCodeEnum.DATA_IS_WRONG);
         }
@@ -65,8 +65,8 @@ public class ShopShopServiceImpl implements ShopShopService {
      * */
     @Override
     @Transactional
-    public int updatesStatusOut(int sId) {
-        int num = shopShopMapper.updatesStatusOut(sId);
+    public int updatesStatusOut(int id) {
+        int num = shopShopMapper.updatesStatusOut(id);
         if(num < 1){
             throw new ServiceException(ResultCodeEnum.DATA_IS_WRONG);
         }
@@ -78,8 +78,8 @@ public class ShopShopServiceImpl implements ShopShopService {
      * */
     @Override
     @Transactional
-    public int updatesStatusUp(int sId) {
-        int num = shopShopMapper.updatesStatusUp(sId);
+    public int updatesStatusUp(int id) {
+        int num = shopShopMapper.updatesStatusUp(id);
         if(num < 1){
             throw new ServiceException(ResultCodeEnum.DATA_IS_WRONG);
         }
@@ -91,8 +91,8 @@ public class ShopShopServiceImpl implements ShopShopService {
      * */
     @Override
     @Transactional
-    public int updateDeleteStatus(int sId) {
-        int num = shopShopMapper.updateDeleteStatus(sId);
+    public int updateDeleteStatus(int id) {
+        int num = shopShopMapper.updateDeleteStatus(id);
         if(num < 1){
             throw new ServiceException(ResultCodeEnum.DATA_IS_WRONG);
         }
