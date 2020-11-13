@@ -52,8 +52,7 @@ public class ServerServiceImpl implements ServerService {
         ReminderRecordVo reminderRecordVo;
         List<ReminderRecord> corderdetails = serviceMapper.allCorderdetails();
 
-        for (ReminderRecord cor: corderdetails
-             ) {
+        for (ReminderRecord cor: corderdetails) {
             reminderRecordVo=new ReminderRecordVo();
             BeanUtils.copyProperties(cor,reminderRecordVo);
             list.add(reminderRecordVo);
@@ -72,8 +71,7 @@ public class ServerServiceImpl implements ServerService {
         ServerOrderVo serverOrderVo=new ServerOrderVo();
         List<ServerOrder> serverOrders = serviceMapper.allServerOrder();
         List<ServerOrderVo> list =new ArrayList<>();
-        for (ServerOrder ser:serverOrders
-             ) {
+        for (ServerOrder ser:serverOrders) {
             serverOrderVo=new ServerOrderVo();
             BeanUtils.copyProperties(ser,serverOrderVo);
             list.add(serverOrderVo);
@@ -99,8 +97,7 @@ public class ServerServiceImpl implements ServerService {
         List<PreSale> preSales = serviceMapper.getallPreSale();
         List<PreSaleVo> list=new ArrayList<>();
         PreSaleVo preSaleVo ;
-        for (PreSale pre:preSales
-             ) {
+        for (PreSale pre:preSales) {
             preSaleVo= new PreSaleVo();
             BeanUtils.copyProperties(pre,preSaleVo);
             list.add(preSaleVo);
@@ -120,8 +117,7 @@ public class ServerServiceImpl implements ServerService {
         List<Shop> shops = serviceMapper.allShop();
         List<ShopVo> list = new ArrayList<>();
         ShopVo shopVo;
-        for (Shop shop:shops
-             ) {
+        for (Shop shop:shops) {
             shopVo=new ShopVo();
             BeanUtils.copyProperties(shop,shopVo);
             list.add(shopVo);

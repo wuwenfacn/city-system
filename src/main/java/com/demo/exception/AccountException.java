@@ -1,6 +1,6 @@
 package com.demo.exception;
 
-import com.demo.commons.StatusCode;
+import com.demo.commons.result.StatusCode;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

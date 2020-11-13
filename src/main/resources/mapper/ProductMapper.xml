@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.ProductsMapper">
+    <resultMap id="ProductsMapper" type="com.demo.entity.Products">
+        <id property="name" column="name"></id>
+        <result property="detail" column="detail"></result>
+        <result property="tag" column="tag"></result>
+        <result property="price" column="price"></result>
+        <result property="oldPrice" column="old_price"></result>
+        <result property="image" column="image"></result>
+        <result property="sex" column="sex"></result>
+        <result property="capacity" column="capacity"></result>
+        <result property="type" column="type"></result>
+    </resultMap>
+
+    <select id="selectProductsList" resultMap="ProductsMapper">
+        SELECT name, detail, tag, price, old_price, image, sex, capacity, type
+        FROM f_product
+        WHERE delete_status = 1;
+    </select>
+
+</mapper>

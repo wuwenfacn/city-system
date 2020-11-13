@@ -20,9 +20,9 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <!--要拦截的-->
-            <mvc:mapping path="/**"/>
+            <mvc:mapping path="/"/>
             <!--不拦截的-->
-            <mvc:exclude-mapping path="/user/login"/>
+            <mvc:exclude-mapping path="/**"/>
             <!--引入 LoginInterceptor 拦截器类-->
             <bean class="com.demo.commons.interceptor.LoginInterceptor"/>
         </mvc:interceptor>

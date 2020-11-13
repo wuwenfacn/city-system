@@ -29,8 +29,8 @@
     <hibernate-validator.version>6.0.20.Final</hibernate-validator.version>
     <cors-filter.version>2.9</cors-filter.version>
     <logback-classic.version>1.2.3</logback-classic.version>
-    <pagehelper.version>5.2.0</pagehelper.version>
-    <jsqlparser.version>0.9.5</jsqlparser.version>
+    <pagehelper.version>5.1.11</pagehelper.version>
+    <jsqlparser.version>3.1</jsqlparser.version>
     <servlet-api.version>2.5</servlet-api.version>
     <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
   </properties>
