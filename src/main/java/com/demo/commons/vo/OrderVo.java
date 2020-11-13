@@ -1,5 +1,6 @@
 package com.demo.commons.vo;
 
+import com.demo.entity.Shopcart;
 import com.demo.entity.WProduct;
 import lombok.Data;
 
@@ -51,29 +52,17 @@ public class OrderVo {
     private BigDecimal oPrice;
 
     /**
-     * 外键,产品id
-     */
-    private Integer pId;
-
-    /**
      * 外键,用户id
      */
     private Integer uId;
-
-    /**
-     * 外键,优惠券id
-     */
-    private Integer cId;
-
-    /**
-     * 商品数量
-     */
-    private Integer oQuantity;
 
     /**
      * 快递信息
      */
     private String oDiliver;
 
-    private List<WProduct> products;
+    /**
+     * 订单关联的购物车
+     */
+    private List<Shopcart> shopcartList;
 }

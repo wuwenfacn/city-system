@@ -54,7 +54,10 @@ public class WOrder implements Serializable {
      */
     private String oDiliver;
 
-    private List<WProduct> wProductLis;
+    /**
+     * 订单关联的购物车
+     */
+    private List<Shopcart> shopcartList;
 
     private static final long serialVersionUID = 1L;
 }

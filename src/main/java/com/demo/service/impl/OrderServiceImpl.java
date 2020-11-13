@@ -3,6 +3,7 @@ package com.demo.service.impl;
 import com.demo.commons.exception.ServiceException;
 import com.demo.commons.requestEntity.OrderRequest;
 import com.demo.commons.result.ResultCodeEnum;
+import com.demo.commons.vo.OrderVo;
 import com.demo.entity.WOrder;
 import com.demo.mapper.WOrderMapper;
 import com.demo.service.OrderService;
@@ -38,11 +39,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List getList(OrderRequest orderRequest, int page, int size) {
         PageHelper.startPage(page,size);
-        List<WOrder> wOrder = wOrderMapper.selectOrderByPid(orderRequest);
-        if (wOrder==null) {
+        List<OrderVo> list1 = wOrderMapper.selectOrderByPid(orderRequest);
+        if (list1.size()<1) {
             throw new ServiceException(ResultCodeEnum.SQL_SELECT_ERROR);
         }
-        PageInfo info = new PageInfo(wOrder);
+        PageInfo info = new PageInfo(list1);
         List list = info.getList();
         return list;
     }

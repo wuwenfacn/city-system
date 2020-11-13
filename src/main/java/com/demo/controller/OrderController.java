@@ -34,7 +34,7 @@ public class OrderController {
      */
     @GetMapping("/list")
     public BaseResult getOrderList(
-            OrderRequest orderRequest,
+             OrderRequest orderRequest,
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "3") int size
     ){

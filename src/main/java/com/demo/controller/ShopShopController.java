@@ -100,6 +100,7 @@ public class ShopShopController {
     public BaseResult updatesStatusUp(int id){
         int num = shopShopService.updatesStatusUp(id);
         return BaseResult.success(num);
+
     }
 
     /*

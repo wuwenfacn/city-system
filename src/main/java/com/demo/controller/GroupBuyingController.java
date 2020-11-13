@@ -3,6 +3,7 @@ package com.demo.controller;
 import com.demo.commons.requestEntity.GroupBuyingRequest;
 import com.demo.commons.result.BaseResult;
 import com.demo.service.GroupBuyingService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -27,10 +28,8 @@ public class GroupBuyingController {
      */
     @PostMapping("/add")
     public BaseResult addCoupon(@RequestBody GroupBuyingRequest groupBuyingRequest){
-        if (groupBuyingService.addCoupon(groupBuyingRequest)) {
-            return BaseResult.success();
-        }
-        return BaseResult.error();
+        boolean b = groupBuyingService.addCoupon(groupBuyingRequest);
+        return BaseResult.success(b);
     }
 
     /**

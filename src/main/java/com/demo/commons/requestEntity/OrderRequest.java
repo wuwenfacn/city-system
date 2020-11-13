@@ -12,11 +12,7 @@ import lombok.Data;
 @Data
 public class OrderRequest {
 
-    /**
-     * 商品名
-     */
-    private int pId;
-
+    private String name;
     /**
      * 订单状态
      */
@@ -25,6 +21,6 @@ public class OrderRequest {
     /**
      * 订单类型
      */
-    private int oType;
+    private int otype;
 
 }

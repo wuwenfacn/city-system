@@ -13,9 +13,11 @@
     <result column="o_price" jdbcType="DECIMAL" property="oPrice" />
     <result column="u_id" jdbcType="INTEGER" property="uId" />
     <result column="o_diliver" jdbcType="VARCHAR" property="oDiliver" />
-    <!--订单对产品一对多-->
-    <collection property="products" resultMap="com.demo.mapper.WProductMapper.BaseResultMap"/>
+  </resultMap>
 
+  <resultMap id="order_shopcart" type="com.demo.commons.vo.OrderVo" extends="BaseResultMap">
+    <!--订单对购物车一对多-->
+    <collection property="shopcartList" ofType="com.demo.entity.Shopcart" resultMap="com.demo.mapper.ShopcartMapper.BaseResultMap"/>
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
@@ -144,19 +146,19 @@
   </update>
 
   <!--分页查询 订单-->
-  <select id="selectOrderByPid" resultMap="BaseResultMap">
-    select o.o_id, o_discribe, o_no, o_createtime, o_type, o_price, u_id, o_diliver,
-    wp.p_id, p_name, p_describe, p_shop, p_tag, onsale_time, shelve_time, p_price, p_classification, p_diliver, p_details
-    from w_order o left join w_order_product wop on o.o_id = wop.o_id left join w_product wp on wop.p_id = wp.p_id
+  <select id="selectOrderByPid" resultMap="order_shopcart">
+    select o.o_id, o_discribe, o_no, o_createtime, o_type, s.status, o_price, u_id, o_diliver,
+    s.cart_id, cart_title, product_id, quantity, unit_price, total_price, status
+    from w_order o left join w_order_shopcart os on o_id=os.order_id left join shopcart s on os.cart_id=s.cart_id
     <trim prefix="where" prefixOverrides="AND|OR">
-      <if test="pId != null and pId !=0">
-        o.o_id in (select o.o_id from w_order_product where wp.p_id=#{pId})
+      <if test="status != null">
+          o.status=#{status}
       </if>
-      <if test="status != null and status != 0">
-        and o.status=#{status}
+      <if test="otype != null">
+          and o_type=#{otype}
       </if>
-      <if test="OType != null and oType != 0">
-        and o.o_type=#{oType}
+      <if test="name != null and name != ''">
+          and cart_title like '%#{name}%'
       </if>
     </trim>
   </select>

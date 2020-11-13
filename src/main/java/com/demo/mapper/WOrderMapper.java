@@ -1,6 +1,8 @@
 package com.demo.mapper;
 
 import com.demo.commons.requestEntity.OrderRequest;
+import com.demo.commons.vo.OrderVo;
+import com.demo.entity.Shopcart;
 import com.demo.entity.WOrder;
 
 import java.util.List;
@@ -18,7 +20,7 @@ public interface WOrderMapper {
 
     int insertSelective(WOrder record);
 
-    List<WOrder> selectOrderByPid(OrderRequest orderRequest);
+    List<OrderVo> selectOrderByPid(OrderRequest orderRequest);
 
     int updateByPrimaryKeySelective(WOrder record);
 
